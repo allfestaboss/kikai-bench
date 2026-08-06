@@ -178,6 +178,32 @@ def hand_projected() -> dict:
     }
 
 
+def hand_composite() -> dict:
+    """FTC-06 の複合公差の上段。1つの記入枠が上下2段になっている形。
+
+        #284=GEOMETRIC_TOLERANCE_RELATIONSHIP('composite','',#337,#338);
+        #337=(GEOMETRIC_TOLERANCE('Position surfacic profile.9','',#9976,#2264)
+              GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE((#333))SURFACE_PROFILE_TOLERANCE());
+        #338 が下段（0.01 in、データムは D のみ）
+
+    上段は完全なデータム系 D|B|C に対する位置を、下段はその部分集合 D に対する
+    姿勢・形状を規制する。STEP 上は別々の公差実体なので、関係を見ないと
+    「同じ名前の公差が2つある」ようにしか見えない。
+    """
+    value_inch = 0.0500000000002
+    return {
+        "id": 337,
+        "kind": "SURFACE_PROFILE_TOLERANCE",
+        "name": "Position surfacic profile.9",
+        "value": value_inch,
+        "unit": "inch",
+        "value_mm": value_inch * 25.4,
+        "datums": ("D", "B", "C"),
+        "composite_role": "upper",
+        "composite_partner": 338,
+    }
+
+
 HANDS = [
     (TARGET_FTC06, hand_flatness()),
     (TARGET_FTC06, hand_position()),
@@ -185,6 +211,7 @@ HANDS = [
     (CORPUS / "nist_ftc_09_asme1_ap242-e1.stp", hand_millimetre()),
     (CORPUS / "nist_ftc_08_asme1_ap242-e2.stp", hand_complex_magnitude()),
     (CORPUS / "nist_ftc_09_asme1_ap242-e1.stp", hand_projected()),
+    (TARGET_FTC06, hand_composite()),
 ]
 TOL = 1e-9
 
@@ -205,7 +232,8 @@ def main() -> int:
             print("  NG: 抽出側に存在しない")
             ok = False
             continue
-        for key in ("kind", "name", "unit", "datums", "zone_form"):
+        for key in ("kind", "name", "unit", "datums", "zone_form",
+                    "composite_role", "composite_partner"):
             want = hand.get(key)
             if key not in hand:
                 continue

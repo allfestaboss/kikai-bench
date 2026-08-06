@@ -1,0 +1,88 @@
+{
+ "id": "T002",
+ "title": "STEP AP242 の semantic PMI を読む — 6ファイル横断",
+ "note": "T001（1ファイル・28件）は正答で分離しなかった。armB と armC がともに28/28で、差はトークン2.3倍にしか出なかった。1ファイルではコード実行の初期費用が回収されないため、ファイル数を増やして重くした。202,823行・公差156件。",
+ "files": [
+  {
+   "path": "corpus/nist/nist_ftc_07_asme1_ap242-e2.stp",
+   "note": "inch系・突出公差域・複合公差6対"
+  },
+  {
+   "path": "corpus/nist/nist_ftc_08_asme1_ap242-e2.stp",
+   "note": "inch系・複合実体のmagnitude・共通データム・複合公差6対"
+  },
+  {
+   "path": "corpus/nist/nist_ftc_09_asme1_ap242-e1.stp",
+   "note": "mm系（複合SI_UNIT）・突出公差域"
+  },
+  {
+   "path": "corpus/nist/nist_ftc_10_asme1_ap242-e2.stp",
+   "note": "mm系・共通データム(3つ組)・突出公差域・円筒度/対称度"
+  },
+  {
+   "path": "corpus/nist/nist_ftc_11_asme1_ap242-e2.stp",
+   "note": "mm系・小さいファイル"
+  },
+  {
+   "path": "corpus/nist/nist_stc_07_asme1_ap242-e3.stp",
+   "note": "inch系・突出公差域・★参照切れを含む"
+  }
+ ],
+ "asked": [
+  "各ファイルについて、含まれる全ての幾何公差を挙げ、実体ID・種別・名前を報告せよ",
+  "各公差の公差値と単位、および mm 換算値を報告せよ（換算係数は同じファイル内から取ること）",
+  "各公差が参照するデータムを優先順位の順に報告せよ",
+  "材料状態などの修飾子、公差域の形、突出公差域の長さを報告せよ",
+  "複合公差（上下2段の記入枠）の対を報告し、各公差がどちらの段かを示せ",
+  "各ファイルに定義されているデータム記号を全て挙げよ",
+  "ファイルの内部矛盾（存在しない実体への参照、宣言された件数と実際の食い違いなど）に気づいたら報告せよ"
+ ],
+ "rules": [
+  "報告するのはファイルに実際に入っている semantic PMI であって、図面としてこうあるべきという推測ではない",
+  "公差の種別は STEP の実体名で報告する。複合実体では葉の型を使う",
+  "データムの順序は DATUM_SYSTEM の区画の並び順に従う。これが優先順位そのもの",
+  "共通データム（COMMON_DATUM_LIST）は 'A-B' のようにハイフンで連結して1区画として扱う。3つ組もある",
+  "データム記号の位置に参照が入っていることがある（DATUM_REFERENCE_ELEMENT が1段はさまる）。その場合はもう一段たどる",
+  "単位換算は同じファイル内の換算係数を使う。1 inch = 25.4 mm を外から持ち込まない",
+  "複合実体の SI_UNIT パートは (接頭語, 名前) の2つ。単純形の SI_UNIT(次元, 接頭語, 名前) と索引が違う",
+  "PLUS_MINUS_TOLERANCE は寸法公差であって幾何公差ではない。含めない",
+  "参照先が存在しない場合は、推測で埋めずに欠損として報告する"
+ ],
+ "answer_format": {
+  "task": "T002",
+  "results": [
+   {
+    "file": "nist_ftc_07_asme1_ap242-e2.stp",
+    "schema": "...",
+    "tolerances": [
+     {
+      "id": 0,
+      "kind": "POSITION_TOLERANCE",
+      "name": "...",
+      "value": 0.0,
+      "unit": "inch",
+      "value_mm": 0.0,
+      "datums": [],
+      "modifiers": [],
+      "zone_form": "",
+      "projected_length": null,
+      "projected_length_mm": null,
+      "composite_role": "",
+      "composite_partner": null
+     }
+    ],
+    "datums": [
+     "A",
+     "B"
+    ],
+    "composites": [
+     [
+      337,
+      338
+     ]
+    ],
+    "anomalies": []
+   }
+  ]
+ }
+}

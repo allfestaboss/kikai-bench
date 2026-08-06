@@ -35,6 +35,7 @@ def build(task_id: str) -> dict:
                                                         "modifiers": list(t.modifiers)}
                                for t in x.tolerances],
                 "datums": [d.label for d in x.datums],
+                "composites": [list(c) for c in x.composites],
                 "counts": x.counts(),
             }
         )
@@ -46,6 +47,7 @@ def build(task_id: str) -> dict:
             "n_file": len(results),
             "n_tolerance": sum(len(r["tolerances"]) for r in results),
             "n_datum": sum(len(r["datums"]) for r in results),
+            "n_composite": sum(len(r["composites"]) for r in results),
         },
     }
 

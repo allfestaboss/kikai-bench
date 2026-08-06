@@ -18,7 +18,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 148,
@@ -32,7 +34,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 147,
@@ -46,7 +50,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 107,
@@ -62,7 +68,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 108,
@@ -79,7 +87,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 134,
@@ -97,7 +107,9 @@
      "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 137,
@@ -114,7 +126,9 @@
      "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 136,
@@ -131,7 +145,9 @@
      "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 133,
@@ -149,7 +165,9 @@
      "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 112,
@@ -167,7 +185,9 @@
      ],
      "zone_form": "cylindrical or circular",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 113,
@@ -187,7 +207,9 @@
      ],
      "zone_form": "cylindrical or circular",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 114,
@@ -207,7 +229,9 @@
      ],
      "zone_form": "cylindrical or circular",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 111,
@@ -227,7 +251,9 @@
      ],
      "zone_form": "cylindrical or circular",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 135,
@@ -245,7 +271,9 @@
      "modifiers": [],
      "zone_form": "spherical",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 138,
@@ -263,7 +291,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 139,
@@ -281,7 +311,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 338,
@@ -297,7 +329,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 337
     },
     {
      "id": 340,
@@ -313,7 +347,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 339
     },
     {
      "id": 345,
@@ -329,7 +365,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 344
     },
     {
      "id": 347,
@@ -345,7 +383,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 346
     },
     {
      "id": 341,
@@ -363,7 +403,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 342,
@@ -381,7 +423,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 343,
@@ -399,7 +443,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 348,
@@ -417,7 +463,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
     },
     {
      "id": 337,
@@ -435,7 +483,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 338
     },
     {
      "id": 339,
@@ -453,7 +503,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 340
     },
     {
      "id": 344,
@@ -471,7 +523,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 345
     },
     {
      "id": 346,
@@ -489,7 +543,9 @@
      "modifiers": [],
      "zone_form": "",
      "projected_length": null,
-     "projected_length_mm": null
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 347
     }
    ],
    "datums": [
@@ -504,6 +560,24 @@
     "J",
     "K"
    ],
+   "composites": [
+    [
+     337,
+     338
+    ],
+    [
+     339,
+     340
+    ],
+    [
+     344,
+     345
+    ],
+    [
+     346,
+     347
+    ]
+   ],
    "counts": {
     "FLATNESS_TOLERANCE": 3,
     "PERPENDICULARITY_TOLERANCE": 2,
@@ -515,6 +589,7 @@
  "summary": {
   "n_file": 1,
   "n_tolerance": 28,
-  "n_datum": 10
+  "n_datum": 10,
+  "n_composite": 4
  }
 }

@@ -12,6 +12,12 @@
                  単純形の SI_UNIT(dim, prefix, name) と索引が違う。ここを取り違えると
                  MILLI を読み落として換算が1000倍狂う（実際に踏んだ）
 
+  複合公差 GEOMETRIC_TOLERANCE_RELATIONSHIP('composite','',#上段,#下段)
+           1つの公差記入枠が上下2段になっている形。上段は完全なデータム系に対する
+           位置を、下段はその部分集合に対する姿勢・形状を規制する。
+           STEP 上は別々の公差実体として現れるので、関係を見ないと
+           「同じ名前の公差が2つある」ようにしか見えない。
+
   突出公差域 PROJECTED_ZONE_DEFINITION(#tolerance_zone, (), #projection_end, #length)
            ASME Y14.5 の Ⓟ。ねじ穴などで、公差域を部品の外へ突き出させる指定。
            突出長さは公差記入枠に Ⓟ.260 のように書かれる。
@@ -198,6 +204,8 @@ class Tolerance:
     zone_form: str = ""  # 'spherical' / 'cylindrical or circular' / 未指定なら空
     projected_length: float | None = None  # 突出公差域の長さ（ファイルの単位）
     projected_length_mm: float | None = None
+    composite_role: str = ""  # 'upper' / 'lower' / 単独なら空
+    composite_partner: int | None = None  # 対になるもう一段の実体ID
 
     def key(self) -> tuple:
         """突き合わせ用。名前は CAD 由来で揺れるので使わない。"""
@@ -207,6 +215,7 @@ class Tolerance:
             self.datums,
             self.zone_form,
             round(self.projected_length_mm, 6) if self.projected_length_mm is not None else None,
+            self.composite_role,
         )
 
 
@@ -221,6 +230,7 @@ class Extract:
     schema: str
     tolerances: list[Tolerance] = field(default_factory=list)
     datums: list[Datum] = field(default_factory=list)
+    composites: list[tuple[int, int]] = field(default_factory=list)  # (上段, 下段)
 
     @property
     def has_semantic_pmi(self) -> bool:
@@ -238,6 +248,22 @@ def _leaf_kind(e: Entity) -> str | None:
         if t in TOLERANCE_KINDS:
             return t
     return None
+
+
+def _composites(model: Model) -> tuple[list[tuple[int, int]], dict[int, tuple[str, int]]]:
+    """複合公差の対。関係実体の第3引数が上段、第4引数が下段。"""
+    pairs: list[tuple[int, int]] = []
+    role: dict[int, tuple[str, int]] = {}
+    for r in model.of("GEOMETRIC_TOLERANCE_RELATIONSHIP"):
+        if len(r.args) < 4 or str(r.args[0] or "") != "composite":
+            continue
+        up, low = model.get(r.args[2]), model.get(r.args[3])
+        if up is None or low is None:
+            continue
+        pairs.append((up.id, low.id))
+        role[up.id] = ("upper", low.id)
+        role[low.id] = ("lower", up.id)
+    return pairs, role
 
 
 def _zone_info(model: Model) -> tuple[dict[int, str], dict[int, tuple[float, Unit | None]]]:
@@ -278,6 +304,7 @@ def _zone_info(model: Model) -> tuple[dict[int, str], dict[int, tuple[float, Uni
 def extract(model: Model) -> Extract:
     out = Extract(schema=model.schema)
     forms, projected = _zone_info(model)
+    out.composites, roles = _composites(model)
 
     seen: set[int] = set()
     for kind in TOLERANCE_KINDS:
@@ -321,6 +348,8 @@ def extract(model: Model) -> Extract:
                     zone_form=forms.get(e.id, ""),
                     projected_length=proj[0] if proj else None,
                     projected_length_mm=(proj[0] * proj[1].mm_per) if (proj and proj[1]) else None,
+                    composite_role=roles.get(e.id, ("", None))[0],
+                    composite_partner=roles.get(e.id, ("", None))[1],
                 )
             )
 

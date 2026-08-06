@@ -163,6 +163,21 @@ def check_declared() -> int:
             mark = f"不一致（差 {got - want:+d}）"
         print(f"{f.name:<36}{want:>6}{got:>6}  {mark}")
     print(f"\n  一致 {ok} / 不一致 {ng} / 宣言なし {skip}")
+
+    # 参照切れの検出。宣言と中身が食い違う原因がこれのことがある。
+    dangling = []
+    for f in sorted(CORPUS.glob("*ap242*.stp")):
+        model = load_step(f)
+        for r in model.of("GEOMETRIC_TOLERANCE_RELATIONSHIP"):
+            if len(r.args) < 4:
+                continue
+            for side, ref in (("上段", r.args[2]), ("下段", r.args[3])):
+                if model.get(ref) is None:
+                    dangling.append((f.name, r.id, side, int(ref)))
+    if dangling:
+        print("\n  参照切れ（存在しない実体を指している）:")
+        for name, rid, side, ref in dangling:
+            print(f"    {name} の #{rid} が {side} #{ref} を指しているが実体が無い")
     if ng:
         print("  ※ 不一致は必ずしもこちらの誤りではない。実体を数え直して")
         print("     宣言側が中身と合っていないことを確かめること。")
