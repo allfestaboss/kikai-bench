@@ -1,0 +1,52 @@
+{
+ "id": "T001",
+ "title": "STEP AP242 の semantic PMI を読む — 幾何公差・データム・修飾子の抽出",
+ "note": "読解の課題。doboku-bench が『書けるか』だったのに対し、こちらは『読めるか』を測る。幾何公差を読み違えるのは実務の事故に直結する。",
+ "files": [
+  {
+   "path": "corpus/nist/nist_ftc_06_asme1_ap242-e2.stp",
+   "source": "NIST MBE PMI Validation and Conformance Testing Project / FTC-06",
+   "note": "AP242 edition 2。semantic PMI あり。"
+  }
+ ],
+ "asked": [
+  "ファイルに含まれる幾何公差を全て挙げ、種別・公差値・単位を報告せよ",
+  "各公差の公差値を mm に換算せよ（ファイルの単位系は inch）",
+  "各公差が参照するデータムを、優先順位の順に報告せよ",
+  "材料状態の修飾子（最大実体公差方式など）が付いている公差を報告せよ",
+  "ファイルに定義されているデータム記号を全て挙げよ"
+ ],
+ "rules": [
+  "報告するのはファイルに実際に入っている semantic PMI であって、図面としてこうあるべき、という推測ではない",
+  "公差の種別は STEP の実体名で報告する（POSITION_TOLERANCE など）。複合実体では葉の型を使う",
+  "データムの順序は DATUM_SYSTEM の区画の並び順に従う。これが優先順位そのもの",
+  "共通データム（COMMON_DATUM_LIST）は 'A-B' のようにハイフンで連結して1つの区画として扱う",
+  "単位換算は同じファイル内の CONVERSION_BASED_UNIT の換算係数を使う。1 inch = 25.4 mm を外から持ち込まない"
+ ],
+ "answer_format": {
+  "task": "T001",
+  "results": [
+   {
+    "file": "nist_ftc_06_asme1_ap242-e2.stp",
+    "schema": "...",
+    "tolerances": [
+     {
+      "id": 146,
+      "kind": "FLATNESS_TOLERANCE",
+      "name": "Flatness.1",
+      "value": 0.01,
+      "unit": "inch",
+      "value_mm": 0.254,
+      "datums": [],
+      "modifiers": []
+     }
+    ],
+    "datums": [
+     "A",
+     "B",
+     "C"
+    ]
+   }
+  ]
+ }
+}
