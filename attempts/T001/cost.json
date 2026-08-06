@@ -1,0 +1,16 @@
+{
+ "_meta": {
+  "round": 1,
+  "note": "分離確認のための試走。採点器を作る前に B と C だけ走らせた。"
+ },
+ "armB": {
+  "tokens": 179004,
+  "duration_ms": 330552,
+  "tool_uses": 12
+ },
+ "armC": {
+  "tokens": 77585,
+  "duration_ms": 360399,
+  "tool_uses": 16
+ }
+}

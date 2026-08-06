@@ -109,9 +109,64 @@ def main() -> int:
         print()
 
     total = hit + miss
-    print(f"突き合わせ結果: {hit}/{total} 一致"
+    print(f"定義との突き合わせ: {hit}/{total} 一致"
           + (f" / 未解釈 {len(table.unparsed)}件" if table.unparsed else ""))
-    return 0 if miss == 0 and not table.unparsed else 1
+    print()
+    ng = check_declared()
+    return 0 if miss == 0 and not table.unparsed and ng == 0 else 1
+
+
+
+
+# ---------------------------------------------------------------------------
+# ファイル自身が持つ検証プロパティとの突き合わせ
+#
+# STEP AP242 のファイルには、書き出した側が数え上げた検証用の値が入っている。
+#   #9948=INTEGER_REPRESENTATION_ITEM('number of geometric tolerances',28.);
+#   #689=DESCRIPTIVE_REPRESENTATION_ITEM('datum references','D,B,C');
+# xlsx の定義（45件）より照合先として強く、corpus のほぼ全ファイルを覆う。
+#
+# この存在は腕(armB)が見つけた。こちらは10,970行を読み通しておらず、
+# 気づいていなかった。
+# ---------------------------------------------------------------------------
+
+import re as _re
+
+_DECL = _re.compile(r"INTEGER_REPRESENTATION_ITEM\('([^']*)',(\d+)\.?\)")
+_DATUM_STR = _re.compile(r"DESCRIPTIVE_REPRESENTATION_ITEM\('datum references','([^']*)'\)")
+
+
+def declared(path: Path) -> dict[str, int]:
+    """ファイルが自分で宣言している検証値。"""
+    s = path.read_text(errors="replace")
+    return {m.group(1): int(m.group(2)) for m in _DECL.finditer(s)}
+
+
+def check_declared() -> int:
+    """全ファイルについて、抽出件数が宣言と合うか見る。"""
+    print("=== ファイル自身の検証プロパティとの突き合わせ ===")
+    print(f"{'ファイル':<36}{'宣言':>6}{'抽出':>6}  判定")
+    print("-" * 62)
+    ok = ng = skip = 0
+    for f in sorted(CORPUS.glob("*ap242*.stp")):
+        d = declared(f)
+        want = d.get("number of geometric tolerances")
+        if want is None:
+            skip += 1
+            continue
+        got = len(extract(load_step(f)).tolerances)
+        if want == got:
+            ok += 1
+            mark = "OK"
+        else:
+            ng += 1
+            mark = f"不一致（差 {got - want:+d}）"
+        print(f"{f.name:<36}{want:>6}{got:>6}  {mark}")
+    print(f"\n  一致 {ok} / 不一致 {ng} / 宣言なし {skip}")
+    if ng:
+        print("  ※ 不一致は必ずしもこちらの誤りではない。実体を数え直して")
+        print("     宣言側が中身と合っていないことを確かめること。")
+    return ng
 
 
 if __name__ == "__main__":
