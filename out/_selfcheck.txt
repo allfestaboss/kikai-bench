@@ -1,0 +1,70 @@
+=== 較正 ===
+
+[nist_ftc_06_asme1_ap242-e2.stp] 幾何公差 28件
+--- #146 Flatness.1 ---
+  kind       手=FLATNESS_TOLERANCE                 抽出=FLATNESS_TOLERANCE                 
+  name       手=Flatness.1                         抽出=Flatness.1                         
+  unit       手=inch                               抽出=inch                               
+  datums     手=()                                 抽出=()                                 
+  value      手=0.010000000000                     抽出=0.010000000000                     差=0.00e+00
+  value_mm   手=0.254000000001                     抽出=0.254000000001                     差=0.00e+00
+
+--- #111 Position.21 ---
+  kind       手=POSITION_TOLERANCE                 抽出=POSITION_TOLERANCE                 
+  name       手=Position.21                        抽出=Position.21                        
+  unit       手=inch                               抽出=inch                               
+  datums     手=('C', 'A', 'B')                    抽出=('C', 'A', 'B')                    
+  value      手=0.025000000000                     抽出=0.025000000000                     差=0.00e+00
+  value_mm   手=0.635000000003                     抽出=0.635000000003                     差=0.00e+00
+  modifiers  手=('MAXIMUM_MATERIAL_REQUIREMENT',)  抽出=('MAXIMUM_MATERIAL_REQUIREMENT',) 
+
+--- #135 Position.15 ---
+  kind       手=POSITION_TOLERANCE                 抽出=POSITION_TOLERANCE                 
+  name       手=Position.15                        抽出=Position.15                        
+  unit       手=inch                               抽出=inch                               
+  datums     手=('D', 'B', 'C')                    抽出=('D', 'B', 'C')                    
+  zone_form  手=spherical                          抽出=spherical                          
+  value      手=0.025000000000                     抽出=0.025000000000                     差=0.00e+00
+  value_mm   手=0.635000000003                     抽出=0.635000000003                     差=0.00e+00
+
+
+[nist_ftc_09_asme1_ap242-e1.stp] 幾何公差 31件
+--- #9771 Position.1 ---
+  kind       手=POSITION_TOLERANCE                 抽出=POSITION_TOLERANCE                 
+  name       手=Position.1                         抽出=Position.1                         
+  unit       手=millimetre                         抽出=millimetre                         
+  value      手=0.016000000000                     抽出=0.016000000000                     差=0.00e+00
+  value_mm   手=0.016000000000                     抽出=0.016000000000                     差=0.00e+00
+
+
+[nist_ftc_08_asme1_ap242-e2.stp] 幾何公差 33件
+--- #59 Feature Control Frame (32) ---
+  kind       手=POSITION_TOLERANCE                 抽出=POSITION_TOLERANCE                 
+  name       手=Feature Control Frame (32)         抽出=Feature Control Frame (32)         
+  unit       手=inch                               抽出=inch                               
+  datums     手=('D', 'B', 'C')                    抽出=('D', 'B', 'C')                    
+  value      手=0.030000000000                     抽出=0.030000000000                     差=0.00e+00
+  value_mm   手=0.762000000000                     抽出=0.762000000000                     差=0.00e+00
+
+--- #10836 Position.37 ---
+  kind       手=POSITION_TOLERANCE                 抽出=POSITION_TOLERANCE                 
+  name       手=Position.37                        抽出=Position.37                        
+  unit       手=millimetre                         抽出=millimetre                         
+  datums     手=('A', 'B', 'C')                    抽出=('A', 'B', 'C')                    
+  zone_form  手=cylindrical or circular            抽出=cylindrical or circular            
+  value      手=0.050000000000                     抽出=0.050000000000                     差=0.00e+00
+  value_mm   手=0.050000000000                     抽出=0.050000000000                     差=0.00e+00
+  projected_length 手=0.260000000000                     抽出=0.260000000000                     差=0.00e+00
+  projected_length_mm 手=0.260000000000                     抽出=0.260000000000                     差=0.00e+00
+
+--- #337 Position surfacic profile.9 ---
+  kind       手=SURFACE_PROFILE_TOLERANCE          抽出=SURFACE_PROFILE_TOLERANCE          
+  name       手=Position surfacic profile.9        抽出=Position surfacic profile.9        
+  unit       手=inch                               抽出=inch                               
+  datums     手=('D', 'B', 'C')                    抽出=('D', 'B', 'C')                    
+  composite_role 手=upper                              抽出=upper                              
+  composite_partner 手=338                                抽出=338                                
+  value      手=0.050000000000                     抽出=0.050000000000                     差=0.00e+00
+  value_mm   手=1.270000000005                     抽出=1.270000000005                     差=0.00e+00
+
+較正: OK（手読みと一致）

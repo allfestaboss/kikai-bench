@@ -45,6 +45,13 @@ def _matches(claim: spec.Claim, t) -> tuple[bool, list[str]]:
     if claim.zone_form and claim.zone_form != t.zone_form:
         bad.append("zone_form")
     for m in claim.modifiers:
+        # Ⓟ は記入枠上の記号で、ファイルでは突出公差域の実体として表れる。
+        # 修飾子の列挙値としては入っていないので、そちらで見る。
+        if m == "PROJECTED_TOLERANCE_ZONE":
+            if t.projected_length_mm is None:
+                bad.append("projected")
+                break
+            continue
         if m not in t.modifiers:
             bad.append("modifiers")
             break

@@ -51,9 +51,7 @@
      "datums": [
       "A"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": 0.425,
      "projected_length_mm": 10.795,
@@ -90,9 +88,7 @@
       "A",
       "B"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": 0.425,
      "projected_length_mm": 10.795,
@@ -134,9 +130,7 @@
       "B",
       "C"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": 0.425,
      "projected_length_mm": 10.795,
@@ -156,9 +150,7 @@
       "B",
       "C"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": 0.15,
      "projected_length_mm": 3.8099999999999996,
@@ -1410,9 +1402,7 @@
      "datums": [
       "A"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": 0.26,
      "projected_length_mm": 0.26,
@@ -1430,9 +1420,7 @@
      "datums": [
       "A"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": 0.26,
      "projected_length_mm": 0.26,
@@ -1803,9 +1791,7 @@
       "B",
       "C"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": 0.26,
      "projected_length_mm": 0.26,
@@ -1825,9 +1811,7 @@
       "B",
       "C"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": 0.26,
      "projected_length_mm": 0.26,
@@ -2339,9 +2323,7 @@
       "E",
       "B"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": 3.2,
      "projected_length_mm": 3.2,
@@ -2380,9 +2362,7 @@
       "F",
       "B"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": 3.2,
      "projected_length_mm": 3.2,
@@ -2402,9 +2382,7 @@
       "G",
       "B"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "cylindrical or circular",
      "projected_length": 3.2,
      "projected_length_mm": 3.2,
@@ -2924,9 +2902,7 @@
      "datums": [
       "A"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "within a cylinder",
      "projected_length": 0.425,
      "projected_length_mm": 10.795,
@@ -2963,9 +2939,7 @@
       "A",
       "B"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "within a cylinder",
      "projected_length": 0.425,
      "projected_length_mm": 10.795,
@@ -3007,9 +2981,7 @@
       "B",
       "C"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "within a cylinder",
      "projected_length": 0.425,
      "projected_length_mm": 10.795,
@@ -3029,9 +3001,7 @@
       "B",
       "C"
      ],
-     "modifiers": [
-      "PROJECTED_TOLERANCE_ZONE"
-     ],
+     "modifiers": [],
      "zone_form": "within a cylinder",
      "projected_length": 0.15,
      "projected_length_mm": 3.8099999999999996,

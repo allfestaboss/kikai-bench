@@ -1,0 +1,90 @@
+=== NIST テストケース定義との突き合わせ ===
+定義: 50行 / うち幾何公差として読めた 45件 / 記号はあるが読めなかった 1件
+
+--- FTC-6  (nist_ftc_06_asme1_ap242-e2.stp, 公差28件) ---
+  OK   ATC72   ⌖ | S⌀ .025 | D | B | C
+  MISS ATC80   (⌀1.000) ⌖ |  ⌀.025 | D | B | C
+       求めた: kind=POSITION_TOLERANCE value=0.025 datums=D|B|C zone=cylindrical or circular mods=－
+       近い候補: POSITION_TOLERANCE value=0.0250000000001 datums=A|B|C zone=cylindrical or circular mods=MAXIMUM_MATERIAL_REQUIREMENT  不一致=['datums']
+  MISS ATC80   (⌀1.000) ⌖ | ⌀.025 | D | B | C
+       求めた: kind=POSITION_TOLERANCE value=0.025 datums=D|B|C zone=cylindrical or circular mods=－
+       近い候補: POSITION_TOLERANCE value=0.0250000000001 datums=A|B|C zone=cylindrical or circular mods=MAXIMUM_MATERIAL_REQUIREMENT  不一致=['datums']
+  OK   ATC80   (1.106) ⌖ | .025 | A | B | C
+  OK   ATC80   (1.106) ⌖ | .025 | A | B | C
+  OK   ATC87   ⌖ | ⌀.025Ⓜ | A | B | C
+  OK   ATC88   ⌖ | ⌀.015 | C | A | B
+  OK   ATC88   ⌖ | ⌀.025Ⓜ | C | A | B
+  OK   ATC89   ⌖ | ⌀.015 | E | A | B
+  OK   ATC89   ⌖ |  ⌀.02Ⓜ | F
+
+--- FTC-7  (nist_ftc_07_asme1_ap242-e2.stp, 公差27件) ---
+  OK   ATC64   ⫽ | .03 | A
+  OK   ATC67   ⌖ | Ø.040Ⓜ | ⌀.045 MAX | A | B | C
+  OK   ATC69   ⌖ | Ø.050<ST> | A | B | C
+  OK   ATC71   ▱ | .01 / Ø1.00
+  OK   ATC84   ⌓ | .06 | A | B | C
+  OK   ATC85   ⌓ | .04 | A | B | C
+  OK   ATC62   ⌓ | .070 | A | B | C
+
+--- FTC-8  (nist_ftc_08_asme1_ap242-e2.stp, 公差33件) ---
+  OK   ATC66   ⫽ | .03ⒻⓉ | A
+  OK   ATC68   ⫽ | .03ⒻⓉ | A
+  OK   ATC68   ⫽ | .015Ⓣ | D
+  OK   ATC76   ⌓ | .04 | D | E-F
+  OK   ATC77   ⌓ | .015 | D | HⓂ-JⓂ
+  OK   ATC90   ⌖ | ⌀ .020ⓂⒻ | A | B
+  OK   ATC92   ⫽ | .03ⒻⓉ | A
+  OK   ATC94   ▱ | .015
+  OK   ATC99   ⌖ | ⌀.050 | D | B | C
+
+--- FTC-9  (nist_ftc_09_asme1_ap242-e1.stp, 公差31件) ---
+  OK   ATC61   ⌖ | ⌀.050 Ⓟ.260 | A | B | C
+  OK   ATC81   3X ⌖.020 | A | B | C
+  OK   ATC81   3X ⌖.060 | A | B | C
+  MISS ATC82   3X ⌖.020 | A | G | H
+       求めた: kind=POSITION_TOLERANCE value=0.02 datums=A|G|H zone=－ mods=－
+       近い候補: POSITION_TOLERANCE value=0.01 datums=A|G|H zone=－ mods=－  不一致=['value']
+  MISS ATC82   3X ⌖.060 | A | G | H
+       求めた: kind=POSITION_TOLERANCE value=0.06 datums=A|G|H zone=－ mods=－
+       近い候補: POSITION_TOLERANCE value=0.01 datums=A|G|H zone=－ mods=－  不一致=['value']
+  OK   ATC95   2X ⌖.030 [0.76] | A | B | C
+  OK   ATC96   ⌖ | .06Ⓜ | A | B | C
+  OK   ATC96   ⌖ | .02Ⓜ | A | B | C
+  OK   ATC97   ⌖ | .030Ⓜ | A | B | C
+  OK   ATC98   ⌖ | Ø.025Ⓜ | A | DⓂ | EⓂ
+  OK   ATC98   ⌖ | Ø.025Ⓜ | A | DⓂ | EⓂ
+
+--- FTC-10  (nist_ftc_10_asme1_ap242-e2.stp, 公差40件) ---
+  OK   ATC63   ⌭ | 0.1
+  OK   ATC65   ⌯ | 0.5 | A | J
+  OK   ATC78   ⌖ | ⌀0.8 | D | EⓂ-FⓂ-GⓂ
+  OK   ATC86   ⌖ | ⌀0.8 | A | B | C
+  MISS ATC86   ⌖ | ⌀1.5 | A | B | C
+       求めた: kind=POSITION_TOLERANCE value=1.5 datums=A|B|C zone=cylindrical or circular mods=－
+       近い候補: POSITION_TOLERANCE value=0.0 datums=A|B|C zone=cylindrical or circular mods=MAXIMUM_MATERIAL_REQUIREMENT  不一致=['value']
+  OK   ATC91   ⌖ | ⌀0Ⓜ | A | B | C
+  OK   ATC91   ⌖ | ⌀0Ⓛ | H | K | L
+  OK   ATC93   ⏊ | 0.25 | H
+
+=== 記号はあるが読めなかった定義（要確認） ===
+  FTC-11 ATC55: '⌢\n(197.9)'
+
+定義との突き合わせ: 40/45 一致 / 未解釈 1件
+
+=== ファイル自身の検証プロパティとの突き合わせ ===
+ファイル                                    宣言    抽出  判定
+--------------------------------------------------------------
+nist_ctc_01_asme1_ap242-e1.stp           6     6  OK
+nist_ctc_02_asme1_ap242-e2.stp          22    22  OK
+nist_ctc_03_asme1_ap242-e2.stp          13    13  OK
+nist_ctc_04_asme1_ap242-e1.stp           7     7  OK
+nist_ftc_06_asme1_ap242-e2.stp          28    28  OK
+nist_ftc_07_asme1_ap242-e2.stp          27    27  OK
+nist_stc_06_asme1_ap242-e3.stp          25    25  OK
+nist_stc_07_asme1_ap242-e3.stp          22    22  OK
+nist_stc_08_asme1_ap242-e3.stp          30    30  OK
+nist_stc_10_asme1_ap242-e2.stp          34    37  不一致（差 +3）
+
+  一致 9 / 不一致 1 / 宣言なし 7
+  ※ 不一致は必ずしもこちらの誤りではない。実体を数え直して
+     宣言側が中身と合っていないことを確かめること。

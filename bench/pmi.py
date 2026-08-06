@@ -324,10 +324,12 @@ def extract(model: Model) -> Extract:
             #   複合形 GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE((#datum_system))
             #   単純形 XXX_TOLERANCE(name, desc, #mag, #aspect, (#datum_system))
             # 後者は第5引数。複合形だけ見ていると単純形のデータムを丸ごと落とす。
+            # 突出公差域は projected_length_* が持つ。修飾子には合成しない。
+            # 公差記入枠では Ⓟ として現れるが、ファイルの
+            # GEOMETRIC_TOLERANCE_WITH_MODIFIERS にその列挙値は入っていない。
+            # 「ファイルに実際に入っているものを報告する」という規則を
+            # 参照解自身が破ってはいけない。
             proj = projected.get(e.id)
-            if proj is not None:
-                # 公差記入枠では Ⓟ として現れるので、修飾子としても持たせる
-                modifiers = modifiers + ("PROJECTED_TOLERANCE_ZONE",)
 
             dref = e.parts.get("GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE") or []
             systems = dref[0] if dref else None
