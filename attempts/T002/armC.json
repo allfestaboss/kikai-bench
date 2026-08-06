@@ -1,0 +1,3639 @@
+{
+ "task": "T002",
+ "results": [
+  {
+   "file": "nist_ftc_07_asme1_ap242-e2.stp",
+   "schema": "AP242_MANAGED_MODEL_BASED_3D_ENGINEERING_MIM_LF { 1 0 10303 442 3 1 4 }",
+   "tolerances": [
+    {
+     "id": 13917,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Geometrical Tolerance.1",
+     "value": 0.06,
+     "unit": "INCH",
+     "value_mm": 1.524,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 13947,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Profile tolerance of any surface.1",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 13984,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Perpendicularity.1",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": 0.425,
+     "projected_length_mm": 10.795,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      13986
+     ],
+     "projected_zone_definition_ids": [
+      13987
+     ]
+    },
+    {
+     "id": 14025,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.1",
+     "value": 0.02,
+     "unit": "INCH",
+     "value_mm": 0.508,
+     "datums": [
+      "A",
+      "B"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": 0.425,
+     "projected_length_mm": 10.795,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      14027
+     ],
+     "projected_zone_definition_ids": [
+      14028
+     ]
+    },
+    {
+     "id": 14086,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.2",
+     "value": 0.023,
+     "unit": "INCH",
+     "value_mm": 0.5842,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": 0.425,
+     "projected_length_mm": 10.795,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      14088
+     ],
+     "projected_zone_definition_ids": [
+      14089
+     ]
+    },
+    {
+     "id": 14121,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.1",
+     "value": 0.04,
+     "unit": "INCH",
+     "value_mm": 1.016,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 14130
+    },
+    {
+     "id": 14130,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.1",
+     "value": 0.01,
+     "unit": "INCH",
+     "value_mm": 0.254,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 14121
+    },
+    {
+     "id": 14218,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.3",
+     "value": 0.023,
+     "unit": "INCH",
+     "value_mm": 0.5842,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": 0.15,
+     "projected_length_mm": 3.81,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      14220
+     ],
+     "projected_zone_definition_ids": [
+      14221
+     ]
+    },
+    {
+     "id": 14257,
+     "kind": "FLATNESS_TOLERANCE",
+     "name": "Flatness.1",
+     "value": 0.01,
+     "unit": "INCH",
+     "value_mm": 0.254,
+     "datums": [],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "defined_unit_length": 1.0,
+     "defined_unit_unit": "INCH",
+     "defined_unit_length_mm": 25.4,
+     "defined_area_unit_type": ".CIRCULAR."
+    },
+    {
+     "id": 14290,
+     "kind": "PARALLELISM_TOLERANCE",
+     "name": "Parallelism.1",
+     "value": 0.03,
+     "unit": "INCH",
+     "value_mm": 0.762,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 14323,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.2",
+     "value": 0.06,
+     "unit": "INCH",
+     "value_mm": 1.524,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 14391,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.4",
+     "value": 0.05,
+     "unit": "INCH",
+     "value_mm": 1.27,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".STATISTICAL_TOLERANCE."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      14393
+     ]
+    },
+    {
+     "id": 14472,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.5",
+     "value": 0.06,
+     "unit": "INCH",
+     "value_mm": 1.524,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 14483,
+     "tolerance_zone_ids": [
+      14474
+     ]
+    },
+    {
+     "id": 14483,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.5",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 14472,
+     "tolerance_zone_ids": [
+      14485
+     ]
+    },
+    {
+     "id": 14544,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.6",
+     "value": 0.04,
+     "unit": "INCH",
+     "value_mm": 1.016,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      14546
+     ]
+    },
+    {
+     "id": 14579,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.7",
+     "value": 0.045,
+     "unit": "INCH",
+     "value_mm": 1.143,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      14581
+     ]
+    },
+    {
+     "id": 14614,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.3",
+     "value": 0.07,
+     "unit": "INCH",
+     "value_mm": 1.778,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 14623
+    },
+    {
+     "id": 14623,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.3",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 14614
+    },
+    {
+     "id": 14709,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.8",
+     "value": 0.06,
+     "unit": "INCH",
+     "value_mm": 1.524,
+     "datums": [
+      "E",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 14720,
+     "tolerance_zone_ids": [
+      14711
+     ]
+    },
+    {
+     "id": 14720,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.8",
+     "value": 0.02,
+     "unit": "INCH",
+     "value_mm": 0.508,
+     "datums": [
+      "E",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 14709,
+     "tolerance_zone_ids": [
+      14722
+     ]
+    },
+    {
+     "id": 14781,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.9",
+     "value": 0.04,
+     "unit": "INCH",
+     "value_mm": 1.016,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      14783
+     ]
+    },
+    {
+     "id": 14816,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.10",
+     "value": 0.045,
+     "unit": "INCH",
+     "value_mm": 1.143,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      14818
+     ]
+    },
+    {
+     "id": 14854,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.5",
+     "value": 0.006,
+     "unit": "INCH",
+     "value_mm": 0.1524,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 15026,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.6",
+     "value": 0.03,
+     "unit": "INCH",
+     "value_mm": 0.762,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 15036
+    },
+    {
+     "id": 15036,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.6",
+     "value": 0.005,
+     "unit": "INCH",
+     "value_mm": 0.127,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 15026
+    },
+    {
+     "id": 15076,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.7",
+     "value": 0.07,
+     "unit": "INCH",
+     "value_mm": 1.778,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 15085
+    },
+    {
+     "id": 15085,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.7",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 15076
+    }
+   ],
+   "datums": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "composites": [
+    [
+     14121,
+     14130
+    ],
+    [
+     14472,
+     14483
+    ],
+    [
+     14614,
+     14623
+    ],
+    [
+     14709,
+     14720
+    ],
+    [
+     15026,
+     15036
+    ],
+    [
+     15076,
+     15085
+    ]
+   ],
+   "anomalies": [
+    "14 of 27 geometric tolerances have no TOLERANCE_ZONE, so no zone form is stated for them: ['#13917', '#13947', '#14121', '#14130', '#14257', '#14290', '#14323', '#14614', '#14623', '#14854', '#15026', '#15036', '#15076', '#15085']",
+    "composite pair #14709/#14720: lower segment repeats the full datum reference frame ['E', 'B', 'C']",
+    "composite pair #15026/#15036: lower segment repeats the full datum reference frame ['A', 'B', 'C']"
+   ],
+   "datum_targets": [],
+   "declared_pmi_validation_counts": [
+    {
+     "property": "number of composite tolerances",
+     "declared": 6,
+     "actual": 6,
+     "entity": 16541,
+     "match": true
+    },
+    {
+     "property": "number of datum targets",
+     "declared": 0,
+     "actual": 0,
+     "entity": 16542,
+     "match": true
+    },
+    {
+     "property": "number of datums",
+     "declared": 5,
+     "actual": 5,
+     "entity": 16543,
+     "match": true
+    },
+    {
+     "property": "number of dimensional locations",
+     "declared": 5,
+     "actual": 5,
+     "entity": 16544,
+     "match": true
+    },
+    {
+     "property": "number of dimensional sizes",
+     "declared": 12,
+     "actual": 12,
+     "entity": 16545,
+     "match": true
+    },
+    {
+     "property": "number of geometric tolerances",
+     "declared": 27,
+     "actual": 27,
+     "entity": 16546,
+     "match": true
+    }
+   ],
+   "reference_integrity": "no dangling entity references: every #id used in the file is defined in it",
+   "entity_count": 17010
+  },
+  {
+   "file": "nist_ftc_08_asme1_ap242-e2.stp",
+   "schema": "AP242_MANAGED_MODEL_BASED_3D_ENGINEERING_MIM_LF { 1 0 10303 442 3 1 4 }",
+   "tolerances": [
+    {
+     "id": 59,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (32)",
+     "value": 0.03,
+     "unit": "INCH",
+     "value_mm": 0.762,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      408
+     ]
+    },
+    {
+     "id": 67,
+     "kind": "PARALLELISM_TOLERANCE",
+     "name": "Feature Control Frame (22)",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [
+      ".TANGENT_PLANE."
+     ],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 68,
+     "kind": "PARALLELISM_TOLERANCE",
+     "name": "Feature Control Frame (11)",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "D"
+     ],
+     "modifiers": [
+      ".TANGENT_PLANE."
+     ],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 69,
+     "kind": "PARALLELISM_TOLERANCE",
+     "name": "Feature Control Frame (23)",
+     "value": 0.03,
+     "unit": "INCH",
+     "value_mm": 0.762,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [
+      ".TANGENT_PLANE.",
+      ".FREE_STATE."
+     ],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 80,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Feature Control Frame (5)",
+     "value": 0.06,
+     "unit": "INCH",
+     "value_mm": 1.524,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 81,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Feature Control Frame (26)",
+     "value": 0.04,
+     "unit": "INCH",
+     "value_mm": 1.016,
+     "datums": [
+      "D",
+      "E-F"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 82,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Feature Control Frame (15)",
+     "value": 0.06,
+     "unit": "INCH",
+     "value_mm": 1.524,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 83,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Feature Control Frame (14)",
+     "value": 0.06,
+     "unit": "INCH",
+     "value_mm": 1.524,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 84,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Feature Control Frame (12)",
+     "value": 0.035,
+     "unit": "INCH",
+     "value_mm": 0.889,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 85,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Feature Control Frame (24)",
+     "value": 0.05,
+     "unit": "INCH",
+     "value_mm": 1.27,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 86,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Feature Control Frame (30)",
+     "value": 0.04,
+     "unit": "INCH",
+     "value_mm": 1.016,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 87
+    },
+    {
+     "id": 87,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Feature Control Frame (30)",
+     "value": 0.005,
+     "unit": "INCH",
+     "value_mm": 0.127,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 86
+    },
+    {
+     "id": 88,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Feature Control Frame (34)",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "D",
+      "G"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "datum_modifiers": {
+      "G": [
+       ".MAXIMUM_MATERIAL_REQUIREMENT."
+      ]
+     }
+    },
+    {
+     "id": 89,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Feature Control Frame (36)",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "D",
+      "K",
+      "L"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "datum_modifiers": {
+      "K": [
+       ".MAXIMUM_MATERIAL_REQUIREMENT."
+      ],
+      "L": [
+       ".MAXIMUM_MATERIAL_REQUIREMENT."
+      ]
+     }
+    },
+    {
+     "id": 90,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Feature Control Frame (44)",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "D",
+      "H-J"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "datum_modifiers": {
+      "H-J": [
+       ".MAXIMUM_MATERIAL_REQUIREMENT.",
+       ".MAXIMUM_MATERIAL_REQUIREMENT."
+      ]
+     }
+    },
+    {
+     "id": 91,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (7)",
+     "value": 0.023,
+     "unit": "INCH",
+     "value_mm": 0.5842,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT.",
+      ".FREE_STATE."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      404
+     ]
+    },
+    {
+     "id": 92,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (9)",
+     "value": 0.02,
+     "unit": "INCH",
+     "value_mm": 0.508,
+     "datums": [
+      "A",
+      "B"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT.",
+      ".FREE_STATE."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      405
+     ]
+    },
+    {
+     "id": 93,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (28)",
+     "value": 0.04,
+     "unit": "INCH",
+     "value_mm": 1.016,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 94,
+     "tolerance_zone_ids": [
+      406
+     ]
+    },
+    {
+     "id": 94,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (28)",
+     "value": 0.02,
+     "unit": "INCH",
+     "value_mm": 0.508,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 93,
+     "tolerance_zone_ids": [
+      407
+     ]
+    },
+    {
+     "id": 95,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (50)",
+     "value": 0.05,
+     "unit": "INCH",
+     "value_mm": 1.27,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 96,
+     "tolerance_zone_ids": [
+      409
+     ]
+    },
+    {
+     "id": 96,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (50)",
+     "value": 0.02,
+     "unit": "INCH",
+     "value_mm": 0.508,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 95,
+     "tolerance_zone_ids": [
+      410
+     ]
+    },
+    {
+     "id": 97,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (38)",
+     "value": 0.05,
+     "unit": "INCH",
+     "value_mm": 1.27,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 98,
+     "tolerance_zone_ids": [
+      411
+     ]
+    },
+    {
+     "id": 98,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (38)",
+     "value": 0.02,
+     "unit": "INCH",
+     "value_mm": 0.508,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 97,
+     "tolerance_zone_ids": [
+      412
+     ]
+    },
+    {
+     "id": 99,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (46)",
+     "value": 0.05,
+     "unit": "INCH",
+     "value_mm": 1.27,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 100,
+     "tolerance_zone_ids": [
+      413
+     ]
+    },
+    {
+     "id": 100,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (46)",
+     "value": 0.02,
+     "unit": "INCH",
+     "value_mm": 0.508,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 99,
+     "tolerance_zone_ids": [
+      414
+     ]
+    },
+    {
+     "id": 101,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (41)",
+     "value": 0.05,
+     "unit": "INCH",
+     "value_mm": 1.27,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 102,
+     "tolerance_zone_ids": [
+      415
+     ]
+    },
+    {
+     "id": 102,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Feature Control Frame (41)",
+     "value": 0.02,
+     "unit": "INCH",
+     "value_mm": 0.508,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 101,
+     "tolerance_zone_ids": [
+      416
+     ]
+    },
+    {
+     "id": 103,
+     "kind": "FLATNESS_TOLERANCE",
+     "name": "Feature Control Frame (2)",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 104,
+     "kind": "FLATNESS_TOLERANCE",
+     "name": "Feature Control Frame (68)",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 105,
+     "kind": "PARALLELISM_TOLERANCE",
+     "name": "Feature Control Frame (4)",
+     "value": 0.02,
+     "unit": "INCH",
+     "value_mm": 0.508,
+     "datums": [
+      "D"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 106,
+     "kind": "PARALLELISM_TOLERANCE",
+     "name": "Feature Control Frame (13)",
+     "value": 0.03,
+     "unit": "INCH",
+     "value_mm": 0.762,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 402,
+     "kind": "FLATNESS_TOLERANCE",
+     "name": "Feature Control Frame (1)",
+     "value": 0.03,
+     "unit": "INCH",
+     "value_mm": 0.762,
+     "datums": [],
+     "modifiers": [
+      ".FREE_STATE."
+     ],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 431,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Feature Control Frame (53)",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT.",
+      ".FREE_STATE."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      403
+     ]
+    }
+   ],
+   "datums": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "L"
+   ],
+   "composites": [
+    [
+     93,
+     94
+    ],
+    [
+     86,
+     87
+    ],
+    [
+     95,
+     96
+    ],
+    [
+     97,
+     98
+    ],
+    [
+     99,
+     100
+    ],
+    [
+     101,
+     102
+    ]
+   ],
+   "anomalies": [
+    "19 of 33 geometric tolerances have no TOLERANCE_ZONE, so no zone form is stated for them: ['#67', '#68', '#69', '#80', '#81', '#82', '#83', '#84', '#85', '#86', '#87', '#88', '#89', '#90', '#103', '#104', '#105', '#106', '#402']",
+    "composite pair #101/#102: lower segment repeats the full datum reference frame ['D', 'B', 'C']",
+    "composite pair #86/#87: lower segment repeats the full datum reference frame ['D', 'B', 'C']",
+    "composite pair #93/#94: lower segment repeats the full datum reference frame ['D', 'B', 'C']",
+    "composite pair #95/#96: lower segment repeats the full datum reference frame ['D', 'B', 'C']",
+    "composite pair #97/#98: lower segment repeats the full datum reference frame ['D', 'B', 'C']",
+    "composite pair #99/#100: lower segment repeats the full datum reference frame ['D', 'B', 'C']"
+   ],
+   "datum_targets": [],
+   "declared_pmi_validation_counts": [],
+   "reference_integrity": "no dangling entity references: every #id used in the file is defined in it",
+   "entity_count": 10072
+  },
+  {
+   "file": "nist_ftc_09_asme1_ap242-e1.stp",
+   "schema": "AP242_MANAGED_MODEL_BASED_3D_ENGINEERING_MIM_LF {1 0 10303 442 1 1 4 }",
+   "tolerances": [
+    {
+     "id": 9702,
+     "kind": "FLATNESS_TOLERANCE",
+     "name": "Flatness.1",
+     "value": 0.01,
+     "unit": "mm",
+     "value_mm": 0.01,
+     "datums": [],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 9733,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Perpendicularity.1",
+     "value": 0.016,
+     "unit": "mm",
+     "value_mm": 0.016,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      9736
+     ]
+    },
+    {
+     "id": 9771,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.1",
+     "value": 0.016,
+     "unit": "mm",
+     "value_mm": 0.016,
+     "datums": [
+      "A",
+      "B"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      9774
+     ]
+    },
+    {
+     "id": 9814,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.5",
+     "value": 0.016,
+     "unit": "mm",
+     "value_mm": 0.016,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      9817
+     ]
+    },
+    {
+     "id": 9956,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.3",
+     "value": 0.05,
+     "unit": "mm",
+     "value_mm": 0.05,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 9994,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.13",
+     "value": 0.03,
+     "unit": "mm",
+     "value_mm": 0.03,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      9997
+     ]
+    },
+    {
+     "id": 10106,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.2",
+     "value": 0.02,
+     "unit": "mm",
+     "value_mm": 0.02,
+     "datums": [
+      "A",
+      "F"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "datum_modifiers": {
+      "F": [
+       ".MAXIMUM_MATERIAL_REQUIREMENT."
+      ]
+     }
+    },
+    {
+     "id": 10159,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.31",
+     "value": 0.03,
+     "unit": "mm",
+     "value_mm": 0.03,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 10197,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.14",
+     "value": 0.04,
+     "unit": "mm",
+     "value_mm": 0.04,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      10200
+     ]
+    },
+    {
+     "id": 10229,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Perpendicularity.2",
+     "value": 0.01,
+     "unit": "mm",
+     "value_mm": 0.01,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      10232
+     ]
+    },
+    {
+     "id": 10273,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.15",
+     "value": 0.01,
+     "unit": "mm",
+     "value_mm": 0.01,
+     "datums": [
+      "A",
+      "G",
+      "B"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 10341,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.24",
+     "value": 0.01,
+     "unit": "mm",
+     "value_mm": 0.01,
+     "datums": [
+      "A",
+      "G",
+      "H"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 10395,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.25",
+     "value": 0.01,
+     "unit": "mm",
+     "value_mm": 0.01,
+     "datums": [
+      "A",
+      "G",
+      "H"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 10441,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.5",
+     "value": 0.008,
+     "unit": "mm",
+     "value_mm": 0.008,
+     "datums": [
+      "A",
+      "G",
+      "H"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 10499,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.32",
+     "value": 0.01,
+     "unit": "mm",
+     "value_mm": 0.01,
+     "datums": [
+      "A",
+      "G",
+      "H"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 10539,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.37",
+     "value": 0.03,
+     "unit": "mm",
+     "value_mm": 0.03,
+     "datums": [
+      "A",
+      "G",
+      "H"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 10569,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Perpendicularity.3",
+     "value": 0.01,
+     "unit": "mm",
+     "value_mm": 0.01,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      10572
+     ]
+    },
+    {
+     "id": 10613,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.20",
+     "value": 0.02,
+     "unit": "mm",
+     "value_mm": 0.02,
+     "datums": [
+      "A",
+      "D",
+      "B"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      10616
+     ]
+    },
+    {
+     "id": 10659,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.21",
+     "value": 0.025,
+     "unit": "mm",
+     "value_mm": 0.025,
+     "datums": [
+      "A",
+      "D",
+      "E"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT.",
+      ".SEPARATE_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "datum_modifiers": {
+      "D": [
+       ".MAXIMUM_MATERIAL_REQUIREMENT."
+      ],
+      "E": [
+       ".MAXIMUM_MATERIAL_REQUIREMENT."
+      ]
+     },
+     "tolerance_zone_ids": [
+      10662
+     ]
+    },
+    {
+     "id": 10701,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.22",
+     "value": 0.025,
+     "unit": "mm",
+     "value_mm": 0.025,
+     "datums": [
+      "A",
+      "D",
+      "E"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT.",
+      ".SEPARATE_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "datum_modifiers": {
+      "D": [
+       ".MAXIMUM_MATERIAL_REQUIREMENT."
+      ],
+      "E": [
+       ".MAXIMUM_MATERIAL_REQUIREMENT."
+      ]
+     },
+     "tolerance_zone_ids": [
+      10704
+     ]
+    },
+    {
+     "id": 10741,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.29",
+     "value": 0.05,
+     "unit": "mm",
+     "value_mm": 0.05,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      10744
+     ]
+    },
+    {
+     "id": 10783,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.36",
+     "value": 0.03,
+     "unit": "mm",
+     "value_mm": 0.03,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      10786
+     ]
+    },
+    {
+     "id": 10836,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.37",
+     "value": 0.05,
+     "unit": "mm",
+     "value_mm": 0.05,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": 0.26,
+     "projected_length_mm": 0.26,
+     "composite_role": "upper",
+     "composite_partner": 10842,
+     "tolerance_zone_ids": [
+      10839
+     ],
+     "projected_zone_definition_ids": [
+      10841
+     ]
+    },
+    {
+     "id": 10842,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.37",
+     "value": 0.01,
+     "unit": "mm",
+     "value_mm": 0.01,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": 0.26,
+     "projected_length_mm": 0.26,
+     "composite_role": "lower",
+     "composite_partner": 10836,
+     "tolerance_zone_ids": [
+      10845
+     ],
+     "projected_zone_definition_ids": [
+      10847
+     ]
+    },
+    {
+     "id": 10898,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.38",
+     "value": 0.05,
+     "unit": "mm",
+     "value_mm": 0.05,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": 0.26,
+     "projected_length_mm": 0.26,
+     "composite_role": "upper",
+     "composite_partner": 10904,
+     "tolerance_zone_ids": [
+      10901
+     ],
+     "projected_zone_definition_ids": [
+      10903
+     ]
+    },
+    {
+     "id": 10904,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.38",
+     "value": 0.01,
+     "unit": "mm",
+     "value_mm": 0.01,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": 0.26,
+     "projected_length_mm": 0.26,
+     "composite_role": "lower",
+     "composite_partner": 10898,
+     "tolerance_zone_ids": [
+      10907
+     ],
+     "projected_zone_definition_ids": [
+      10909
+     ]
+    },
+    {
+     "id": 10949,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.39",
+     "value": 0.02,
+     "unit": "mm",
+     "value_mm": 0.02,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 11011,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.40",
+     "value": 0.02,
+     "unit": "mm",
+     "value_mm": 0.02,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 11069,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.41",
+     "value": 0.06,
+     "unit": "mm",
+     "value_mm": 0.06,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 11101,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Perpendicularity.4",
+     "value": 0.01,
+     "unit": "mm",
+     "value_mm": 0.01,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      11104
+     ]
+    },
+    {
+     "id": 11143,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.42",
+     "value": 0.06,
+     "unit": "mm",
+     "value_mm": 0.06,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    }
+   ],
+   "datums": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+   ],
+   "composites": [
+    [
+     10836,
+     10842
+    ],
+    [
+     10898,
+     10904
+    ]
+   ],
+   "anomalies": [
+    "14 of 31 geometric tolerances have no TOLERANCE_ZONE, so no zone form is stated for them: ['#9702', '#9956', '#10106', '#10159', '#10273', '#10341', '#10395', '#10441', '#10499', '#10539', '#10949', '#11011', '#11069', '#11143']",
+    "tolerance name \"Position.37\" is used by 3 entities ['#10539', '#10836', '#10842'] which are not a single composite pair"
+   ],
+   "datum_targets": [],
+   "declared_pmi_validation_counts": [],
+   "reference_integrity": "no dangling entity references: every #id used in the file is defined in it",
+   "entity_count": 11662
+  },
+  {
+   "file": "nist_ftc_10_asme1_ap242-e2.stp",
+   "schema": "AP242_MANAGED_MODEL_BASED_3D_ENGINEERING_MIM_LF { 1 0 10303 442 3 1 4 }",
+   "tolerances": [
+    {
+     "id": 18511,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Geometrical Tolerance.1",
+     "value": 1.5,
+     "unit": "mm",
+     "value_mm": 1.5,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 18527,
+     "kind": "FLATNESS_TOLERANCE",
+     "name": "Flatness.1",
+     "value": 0.2,
+     "unit": "mm",
+     "value_mm": 0.2,
+     "datums": [],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 18546,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Perpendicularity.1",
+     "value": 0.25,
+     "unit": "mm",
+     "value_mm": 0.25,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      18548
+     ]
+    },
+    {
+     "id": 18568,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.1",
+     "value": 0.5,
+     "unit": "mm",
+     "value_mm": 0.5,
+     "datums": [
+      "A",
+      "B"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      18570
+     ]
+    },
+    {
+     "id": 18610,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.2",
+     "value": 0.65,
+     "unit": "mm",
+     "value_mm": 0.65,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      18612
+     ]
+    },
+    {
+     "id": 18701,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.1",
+     "value": 1.2,
+     "unit": "mm",
+     "value_mm": 1.2,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 18807,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.3",
+     "value": 0.75,
+     "unit": "mm",
+     "value_mm": 0.75,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      18809
+     ]
+    },
+    {
+     "id": 18825,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.4",
+     "value": 1.0,
+     "unit": "mm",
+     "value_mm": 1.0,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 18842,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Perpendicularity.2",
+     "value": 0.1,
+     "unit": "mm",
+     "value_mm": 0.1,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 18873,
+     "kind": "SYMMETRY_TOLERANCE",
+     "name": "Geometrical Tolerance.2",
+     "value": 0.5,
+     "unit": "mm",
+     "value_mm": 0.5,
+     "datums": [
+      "A",
+      "J"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 18907,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.2",
+     "value": 1.5,
+     "unit": "mm",
+     "value_mm": 1.5,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 18938,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Perpendicularity.3",
+     "value": 0.25,
+     "unit": "mm",
+     "value_mm": 0.25,
+     "datums": [
+      "H"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 19001,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.5",
+     "value": 0.8,
+     "unit": "mm",
+     "value_mm": 0.8,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19003
+     ]
+    },
+    {
+     "id": 19020,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.6",
+     "value": 1.2,
+     "unit": "mm",
+     "value_mm": 1.2,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19022
+     ]
+    },
+    {
+     "id": 19042,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.3",
+     "value": 1.75,
+     "unit": "mm",
+     "value_mm": 1.75,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 19060,
+     "kind": "STRAIGHTNESS_TOLERANCE",
+     "name": "Straightness.1",
+     "value": 0.2,
+     "unit": "mm",
+     "value_mm": 0.2,
+     "datums": [],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "defined_unit_length": 15.0,
+     "defined_unit_unit": "mm",
+     "defined_unit_length_mm": 15.0
+    },
+    {
+     "id": 19077,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.4",
+     "value": 1.2,
+     "unit": "mm",
+     "value_mm": 1.2,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 19079
+    },
+    {
+     "id": 19079,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.4",
+     "value": 0.2,
+     "unit": "mm",
+     "value_mm": 0.2,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 19077
+    },
+    {
+     "id": 19103,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.7",
+     "value": 0.8,
+     "unit": "mm",
+     "value_mm": 0.8,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19105
+     ]
+    },
+    {
+     "id": 19125,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Perpendicularity.4",
+     "value": 0.12,
+     "unit": "mm",
+     "value_mm": 0.12,
+     "datums": [
+      "D"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19127
+     ]
+    },
+    {
+     "id": 19144,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.8",
+     "value": 0.8,
+     "unit": "mm",
+     "value_mm": 0.8,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19146
+     ]
+    },
+    {
+     "id": 19163,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Perpendicularity.5",
+     "value": 0.12,
+     "unit": "mm",
+     "value_mm": 0.12,
+     "datums": [
+      "D"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19165
+     ]
+    },
+    {
+     "id": 19182,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.9",
+     "value": 0.8,
+     "unit": "mm",
+     "value_mm": 0.8,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19184
+     ]
+    },
+    {
+     "id": 19201,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Perpendicularity.6",
+     "value": 0.12,
+     "unit": "mm",
+     "value_mm": 0.12,
+     "datums": [
+      "D"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19203
+     ]
+    },
+    {
+     "id": 19248,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.10",
+     "value": 0.8,
+     "unit": "mm",
+     "value_mm": 0.8,
+     "datums": [
+      "D",
+      "E-F-G"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "datum_modifiers": {
+      "E-F-G": [
+       ".MAXIMUM_MATERIAL_REQUIREMENT.",
+       ".MAXIMUM_MATERIAL_REQUIREMENT.",
+       ".MAXIMUM_MATERIAL_REQUIREMENT."
+      ]
+     },
+     "tolerance_zone_ids": [
+      19250
+     ]
+    },
+    {
+     "id": 19313,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.11",
+     "value": 1.0,
+     "unit": "mm",
+     "value_mm": 1.0,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19315
+     ]
+    },
+    {
+     "id": 19372,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.12",
+     "value": 0.0,
+     "unit": "mm",
+     "value_mm": 0.0,
+     "datums": [
+      "H",
+      "K",
+      "L"
+     ],
+     "modifiers": [
+      ".LEAST_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19374
+     ]
+    },
+    {
+     "id": 19391,
+     "kind": "CYLINDRICITY_TOLERANCE",
+     "name": "Cylindricity.1",
+     "value": 0.1,
+     "unit": "mm",
+     "value_mm": 0.1,
+     "datums": [],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 19418,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.5",
+     "value": 1.0,
+     "unit": "mm",
+     "value_mm": 1.0,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 19420
+    },
+    {
+     "id": 19420,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.5",
+     "value": 0.12,
+     "unit": "mm",
+     "value_mm": 0.12,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 19418
+    },
+    {
+     "id": 19460,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.13",
+     "value": 0.8,
+     "unit": "mm",
+     "value_mm": 0.8,
+     "datums": [
+      "H",
+      "K",
+      "L"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19462
+     ]
+    },
+    {
+     "id": 19525,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.14",
+     "value": 0.8,
+     "unit": "mm",
+     "value_mm": 0.8,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19527
+     ]
+    },
+    {
+     "id": 19544,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.15",
+     "value": 1.2,
+     "unit": "mm",
+     "value_mm": 1.2,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19546
+     ]
+    },
+    {
+     "id": 19580,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.16",
+     "value": 0.8,
+     "unit": "mm",
+     "value_mm": 0.8,
+     "datums": [
+      "D",
+      "E",
+      "B"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": 3.2,
+     "projected_length_mm": 3.2,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19582
+     ],
+     "projected_zone_definition_ids": [
+      19583
+     ]
+    },
+    {
+     "id": 19617,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.17",
+     "value": 0.8,
+     "unit": "mm",
+     "value_mm": 0.8,
+     "datums": [
+      "D",
+      "F",
+      "B"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": 3.2,
+     "projected_length_mm": 3.2,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19619
+     ],
+     "projected_zone_definition_ids": [
+      19620
+     ]
+    },
+    {
+     "id": 19654,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.18",
+     "value": 0.8,
+     "unit": "mm",
+     "value_mm": 0.8,
+     "datums": [
+      "D",
+      "G",
+      "B"
+     ],
+     "modifiers": [],
+     "zone_form": "cylindrical or circular",
+     "projected_length": 3.2,
+     "projected_length_mm": 3.2,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19656
+     ],
+     "projected_zone_definition_ids": [
+      19657
+     ]
+    },
+    {
+     "id": 19674,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.6",
+     "value": 1.2,
+     "unit": "mm",
+     "value_mm": 1.2,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 19676
+    },
+    {
+     "id": 19676,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.6",
+     "value": 0.15,
+     "unit": "mm",
+     "value_mm": 0.15,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 19674
+    },
+    {
+     "id": 19741,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.19",
+     "value": 0.0,
+     "unit": "mm",
+     "value_mm": 0.0,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      19743
+     ]
+    },
+    {
+     "id": 19760,
+     "kind": "CYLINDRICITY_TOLERANCE",
+     "name": "Cylindricity.2",
+     "value": 0.1,
+     "unit": "mm",
+     "value_mm": 0.1,
+     "datums": [],
+     "modifiers": [],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    }
+   ],
+   "datums": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "L"
+   ],
+   "composites": [
+    [
+     19077,
+     19079
+    ],
+    [
+     19418,
+     19420
+    ],
+    [
+     19674,
+     19676
+    ]
+   ],
+   "anomalies": [
+    "18 of 40 geometric tolerances have no TOLERANCE_ZONE, so no zone form is stated for them: ['#18511', '#18527', '#18701', '#18825', '#18842', '#18873', '#18907', '#18938', '#19042', '#19060', '#19077', '#19079', '#19391', '#19418', '#19420', '#19674', '#19676', '#19760']"
+   ],
+   "datum_targets": [
+    "K1",
+    "K2",
+    "L1",
+    "L2"
+   ],
+   "declared_pmi_validation_counts": [],
+   "reference_integrity": "no dangling entity references: every #id used in the file is defined in it",
+   "entity_count": 21230
+  },
+  {
+   "file": "nist_ftc_11_asme1_ap242-e2.stp",
+   "schema": "AP242_MANAGED_MODEL_BASED_3D_ENGINEERING_MIM_LF { 1 0 10303 442 1 1 4 }",
+   "tolerances": [
+    {
+     "id": 52,
+     "kind": "FLATNESS_TOLERANCE",
+     "name": "Feature Control Frame (16)",
+     "value": 0.3,
+     "unit": "mm",
+     "value_mm": 0.3,
+     "datums": [],
+     "modifiers": [
+      ".FREE_STATE."
+     ],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 53,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Feature Control Frame (18)",
+     "value": 0.3,
+     "unit": "mm",
+     "value_mm": 0.3,
+     "datums": [
+      "A",
+      "B"
+     ],
+     "modifiers": [
+      ".FREE_STATE."
+     ],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 72,
+     "kind": "CIRCULAR_RUNOUT_TOLERANCE",
+     "name": "Feature Control Frame (15)",
+     "value": 1.2,
+     "unit": "mm",
+     "value_mm": 1.2,
+     "datums": [
+      "A",
+      "B"
+     ],
+     "modifiers": [
+      ".FREE_STATE."
+     ],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    },
+    {
+     "id": 78,
+     "kind": "ROUNDNESS_TOLERANCE",
+     "name": "Feature Control Frame (7)",
+     "value": 1.2,
+     "unit": "mm",
+     "value_mm": 1.2,
+     "datums": [],
+     "modifiers": [
+      ".FREE_STATE."
+     ],
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null
+    }
+   ],
+   "datums": [
+    "A",
+    "B"
+   ],
+   "composites": [],
+   "anomalies": [],
+   "datum_targets": [],
+   "declared_pmi_validation_counts": [],
+   "reference_integrity": "no dangling entity references: every #id used in the file is defined in it",
+   "entity_count": 2032
+  },
+  {
+   "file": "nist_stc_07_asme1_ap242-e3.stp",
+   "schema": "AP242_MANAGED_MODEL_BASED_3D_ENGINEERING_MIM_LF  {1 0 10303 442 4 1 4}",
+   "tolerances": [
+    {
+     "id": 16527,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Profile tolerance of any surface.1",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [],
+     "modifiers": [],
+     "zone_form": "between two equidistant surfaces",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      16546
+     ]
+    },
+    {
+     "id": 16567,
+     "kind": "PERPENDICULARITY_TOLERANCE",
+     "name": "Perpendicularity.1",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "within a cylinder",
+     "projected_length": 0.425,
+     "projected_length_mm": 10.795,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      16573
+     ],
+     "projected_zone_definition_ids": [
+      16581
+     ]
+    },
+    {
+     "id": 16601,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.1",
+     "value": 0.02,
+     "unit": "INCH",
+     "value_mm": 0.508,
+     "datums": [
+      "A",
+      "B"
+     ],
+     "modifiers": [],
+     "zone_form": "within a cylinder",
+     "projected_length": 0.425,
+     "projected_length_mm": 10.795,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      16607
+     ],
+     "projected_zone_definition_ids": [
+      16615
+     ]
+    },
+    {
+     "id": 16652,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.2",
+     "value": 0.023,
+     "unit": "INCH",
+     "value_mm": 0.5842,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "within a cylinder",
+     "projected_length": 0.425,
+     "projected_length_mm": 10.795,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      16658
+     ],
+     "projected_zone_definition_ids": [
+      16666,
+      16673
+     ]
+    },
+    {
+     "id": 16680,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.1",
+     "value": 0.04,
+     "unit": "INCH",
+     "value_mm": 1.016,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "between two equidistant surfaces",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 16707,
+     "tolerance_zone_ids": [
+      16699
+     ]
+    },
+    {
+     "id": 16707,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.1",
+     "value": 0.01,
+     "unit": "INCH",
+     "value_mm": 0.254,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "between two equidistant surfaces",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 16680,
+     "tolerance_zone_ids": [
+      16726
+     ]
+    },
+    {
+     "id": 16793,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.3",
+     "value": 0.023,
+     "unit": "INCH",
+     "value_mm": 0.5842,
+     "datums": [
+      "D",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "within a cylinder",
+     "projected_length": 0.15,
+     "projected_length_mm": 3.81,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      16799
+     ],
+     "projected_zone_definition_ids": [
+      16807,
+      16814,
+      16821,
+      16828
+     ]
+    },
+    {
+     "id": 16835,
+     "kind": "FLATNESS_TOLERANCE",
+     "name": "Flatness.1",
+     "value": 0.01,
+     "unit": "INCH",
+     "value_mm": 0.254,
+     "datums": [],
+     "modifiers": [],
+     "zone_form": "between two equidistant surfaces",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      16860
+     ],
+     "defined_unit_length": 1.0,
+     "defined_unit_unit": "INCH",
+     "defined_unit_length_mm": 25.4,
+     "defined_area_unit_type": ".CIRCULAR."
+    },
+    {
+     "id": 16868,
+     "kind": "PARALLELISM_TOLERANCE",
+     "name": "Parallelism.1",
+     "value": 0.03,
+     "unit": "INCH",
+     "value_mm": 0.762,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "between two equidistant surfaces",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      16874
+     ]
+    },
+    {
+     "id": 16882,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.2",
+     "value": 0.06,
+     "unit": "INCH",
+     "value_mm": 1.524,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "between two equidistant surfaces",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      16888
+     ]
+    },
+    {
+     "id": 16940,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.4",
+     "value": 0.05,
+     "unit": "INCH",
+     "value_mm": 1.27,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".STATISTICAL_TOLERANCE."
+     ],
+     "zone_form": "within a cylinder",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      16946
+     ]
+    },
+    {
+     "id": 17012,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.5",
+     "value": 0.06,
+     "unit": "INCH",
+     "value_mm": 1.524,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "within a cylinder",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 17026,
+     "tolerance_zone_ids": [
+      17018
+     ]
+    },
+    {
+     "id": 17026,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.5",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "within a cylinder",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 17012,
+     "tolerance_zone_ids": [
+      17032
+     ]
+    },
+    {
+     "id": 17099,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.6",
+     "value": 0.04,
+     "unit": "INCH",
+     "value_mm": 1.016,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "within a cylinder",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "",
+     "composite_partner": null,
+     "tolerance_zone_ids": [
+      17105
+     ]
+    },
+    {
+     "id": 17113,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.3",
+     "value": 0.07,
+     "unit": "INCH",
+     "value_mm": 1.778,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "between two equidistant surfaces",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 17140,
+     "tolerance_zone_ids": [
+      17132
+     ]
+    },
+    {
+     "id": 17140,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.3",
+     "value": 0.015,
+     "unit": "INCH",
+     "value_mm": 0.381,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "between two equidistant surfaces",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 17113,
+     "tolerance_zone_ids": [
+      17159
+     ]
+    },
+    {
+     "id": 17226,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.8",
+     "value": 0.06,
+     "unit": "INCH",
+     "value_mm": 1.524,
+     "datums": [
+      "E",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "within a cylinder",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 17240,
+     "tolerance_zone_ids": [
+      17232
+     ]
+    },
+    {
+     "id": 17240,
+     "kind": "POSITION_TOLERANCE",
+     "name": "Position.8",
+     "value": 0.02,
+     "unit": "INCH",
+     "value_mm": 0.508,
+     "datums": [
+      "E",
+      "B",
+      "C"
+     ],
+     "modifiers": [
+      ".MAXIMUM_MATERIAL_REQUIREMENT."
+     ],
+     "zone_form": "within a cylinder",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 17226,
+     "tolerance_zone_ids": [
+      17246
+     ]
+    },
+    {
+     "id": 17255,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.6",
+     "value": 0.03,
+     "unit": "INCH",
+     "value_mm": 0.762,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "between two equidistant surfaces",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 17285,
+     "tolerance_zone_ids": [
+      17277
+     ]
+    },
+    {
+     "id": 17285,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.6",
+     "value": 0.005,
+     "unit": "INCH",
+     "value_mm": 0.127,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "between two equidistant surfaces",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 17255,
+     "tolerance_zone_ids": [
+      17307
+     ]
+    },
+    {
+     "id": 17316,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.8",
+     "value": 0.06,
+     "unit": "INCH",
+     "value_mm": 1.524,
+     "datums": [
+      "A",
+      "B",
+      "C"
+     ],
+     "modifiers": [],
+     "zone_form": "between two equidistant surfaces",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "upper",
+     "composite_partner": 17343,
+     "tolerance_zone_ids": [
+      17335
+     ]
+    },
+    {
+     "id": 17343,
+     "kind": "SURFACE_PROFILE_TOLERANCE",
+     "name": "Position surfacic profile.8",
+     "value": 0.01,
+     "unit": "INCH",
+     "value_mm": 0.254,
+     "datums": [
+      "A"
+     ],
+     "modifiers": [],
+     "zone_form": "between two equidistant surfaces",
+     "projected_length": null,
+     "projected_length_mm": null,
+     "composite_role": "lower",
+     "composite_partner": 17316,
+     "tolerance_zone_ids": [
+      17362
+     ]
+    }
+   ],
+   "datums": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "composites": [
+    [
+     16680,
+     16707
+    ],
+    [
+     17012,
+     17026
+    ],
+    [
+     17113,
+     17140
+    ],
+    [
+     17226,
+     17240
+    ],
+    [
+     17255,
+     17285
+    ],
+    [
+     17316,
+     17343
+    ]
+   ],
+   "anomalies": [
+    "#14028=DIMENSIONAL_SIZE_WITH_DATUM_FEATURE references itself in argument 5 (#14028) instead of another entity; this entity carries datum ['B']; its applies_to (the shape aspect the size is measured on) is therefore lost",
+    "#14030=DIMENSIONAL_SIZE_WITH_DATUM_FEATURE references itself in argument 5 (#14030) instead of another entity; this entity carries datum ['C']; its applies_to (the shape aspect the size is measured on) is therefore lost",
+    "TOLERANCE_ZONE #16658 has 2 PROJECTED_ZONE_DEFINITIONs (['#16666', '#16673']); a zone should have one. lengths=[0.425]",
+    "TOLERANCE_ZONE #16799 has 4 PROJECTED_ZONE_DEFINITIONs (['#16807', '#16814', '#16821', '#16828']); a zone should have one. lengths=[0.15]",
+    "composite pair #17226/#17240: lower segment repeats the full datum reference frame ['E', 'B', 'C']",
+    "composite pair #17255/#17285: lower segment repeats the full datum reference frame ['A', 'B', 'C']"
+   ],
+   "datum_targets": [],
+   "declared_pmi_validation_counts": [
+    {
+     "property": "number of composite tolerances",
+     "declared": 6,
+     "actual": 6,
+     "entity": 17422,
+     "match": true
+    },
+    {
+     "property": "number of datum features",
+     "declared": 5,
+     "actual": 5,
+     "entity": 17418,
+     "match": true
+    },
+    {
+     "property": "number of dimensional locations",
+     "declared": 4,
+     "actual": 4,
+     "entity": 17420,
+     "match": true
+    },
+    {
+     "property": "number of dimensional sizes",
+     "declared": 41,
+     "actual": 41,
+     "entity": 17421,
+     "match": true
+    },
+    {
+     "property": "number of geometric tolerances",
+     "declared": 22,
+     "actual": 22,
+     "entity": 17419,
+     "match": true
+    }
+   ],
+   "reference_integrity": "no dangling entity references: every #id used in the file is defined in it",
+   "entity_count": 17470
+  }
+ ]
+}
