@@ -73,7 +73,32 @@ def hand_position() -> dict:
     }
 
 
-HANDS = [hand_flatness(), hand_position()]
+def hand_spherical() -> dict:
+    """FTC-06 の Position.15 を手で追う。公差域が球形の唯一の例。
+
+        #135=(GEOMETRIC_TOLERANCE('Position.15','',#10001,#991)
+              GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE((#325))POSITION_TOLERANCE());
+        #126=TOLERANCE_ZONE('',$,#9395,.F.,(#135),#117);
+        #117=TOLERANCE_ZONE_FORM('spherical');
+
+    NIST の定義 xlsx が FTC-06 について挙げている
+    ATC72 "Symbol: Spherical Diameter Symbol"  ⌖ | S⌀ .025 | D | B | C
+    がこれにあたる。値・データム・公差域の形の3つが揃って初めて仕様と一致する。
+    """
+    value_inch = 0.0250000000001
+    return {
+        "id": 135,
+        "kind": "POSITION_TOLERANCE",
+        "name": "Position.15",
+        "value": value_inch,
+        "unit": "inch",
+        "value_mm": value_inch * 25.4,
+        "datums": ("D", "B", "C"),
+        "zone_form": "spherical",
+    }
+
+
+HANDS = [hand_flatness(), hand_position(), hand_spherical()]
 TOL = 1e-9
 
 
@@ -94,7 +119,7 @@ def main() -> int:
             print("  NG: 抽出側に存在しない")
             ok = False
             continue
-        for key in ("kind", "name", "unit", "datums"):
+        for key in ("kind", "name", "unit", "datums", "zone_form"):
             want = hand.get(key)
             if key not in hand:
                 continue

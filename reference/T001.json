@@ -15,7 +15,8 @@
      "unit": "inch",
      "value_mm": 0.25400000000101597,
      "datums": [],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 148,
@@ -26,7 +27,8 @@
      "unit": "inch",
      "value_mm": 0.25400000000101597,
      "datums": [],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 147,
@@ -37,7 +39,8 @@
      "unit": "inch",
      "value_mm": 0.2540000000010185,
      "datums": [],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 107,
@@ -48,7 +51,8 @@
      "unit": "inch",
      "value_mm": 0.3048000000012192,
      "datums": [],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 108,
@@ -59,7 +63,8 @@
      "unit": "inch",
      "value_mm": 0.3048000000012192,
      "datums": [],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 134,
@@ -74,7 +79,8 @@
       "A",
       "B"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": "cylindrical or circular"
     },
     {
      "id": 137,
@@ -88,7 +94,8 @@
       "D",
       "G"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": "cylindrical or circular"
     },
     {
      "id": 136,
@@ -102,7 +109,8 @@
       "D",
       "H"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": "cylindrical or circular"
     },
     {
      "id": 133,
@@ -117,7 +125,8 @@
       "A",
       "B"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": "cylindrical or circular"
     },
     {
      "id": 112,
@@ -132,7 +141,8 @@
      ],
      "modifiers": [
       "MAXIMUM_MATERIAL_REQUIREMENT"
-     ]
+     ],
+     "zone_form": "cylindrical or circular"
     },
     {
      "id": 113,
@@ -149,7 +159,8 @@
      ],
      "modifiers": [
       "MAXIMUM_MATERIAL_REQUIREMENT"
-     ]
+     ],
+     "zone_form": "cylindrical or circular"
     },
     {
      "id": 114,
@@ -166,7 +177,8 @@
      ],
      "modifiers": [
       "MAXIMUM_MATERIAL_REQUIREMENT"
-     ]
+     ],
+     "zone_form": "cylindrical or circular"
     },
     {
      "id": 111,
@@ -183,7 +195,8 @@
      ],
      "modifiers": [
       "MAXIMUM_MATERIAL_REQUIREMENT"
-     ]
+     ],
+     "zone_form": "cylindrical or circular"
     },
     {
      "id": 135,
@@ -198,7 +211,8 @@
       "B",
       "C"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": "spherical"
     },
     {
      "id": 138,
@@ -213,7 +227,8 @@
       "C",
       "J"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 139,
@@ -228,7 +243,8 @@
       "C",
       "K"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 338,
@@ -241,7 +257,8 @@
      "datums": [
       "D"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 340,
@@ -254,7 +271,8 @@
      "datums": [
       "D"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 345,
@@ -267,7 +285,8 @@
      "datums": [
       "D"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 347,
@@ -280,7 +299,8 @@
      "datums": [
       "D"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 341,
@@ -295,7 +315,8 @@
       "B",
       "C"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 342,
@@ -310,7 +331,8 @@
       "B",
       "C"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 343,
@@ -325,7 +347,8 @@
       "B",
       "C"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 348,
@@ -340,7 +363,8 @@
       "B",
       "C"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 337,
@@ -355,7 +379,8 @@
       "B",
       "C"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 339,
@@ -370,7 +395,8 @@
       "B",
       "C"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 344,
@@ -385,7 +411,8 @@
       "B",
       "C"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     },
     {
      "id": 346,
@@ -400,7 +427,8 @@
       "B",
       "C"
      ],
-     "modifiers": []
+     "modifiers": [],
+     "zone_form": ""
     }
    ],
    "datums": [

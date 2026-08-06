@@ -6,6 +6,11 @@
            -> LENGTH_MEASURE_WITH_UNIT('LENGTH_MEASURE(v)', #unit)
            -> CONVERSION_BASED_UNIT('inch', #factor, ..) -> SI_UNIT(*, MILLI, METRE)
 
+  公差域   TOLERANCE_ZONE('',$,#shape,.F.,(#tolerance),#form)
+           -> TOLERANCE_ZONE_FORM('spherical' | 'cylindrical or circular')
+           円筒か球かで意味が全く違う（ASME Y14.5 の ⌀ と S⌀）。
+           NIST の定義 xlsx との突き合わせで、ここが抜けていることが分かった。
+
   データム GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE((#datum_system))
            -> DATUM_SYSTEM(.., (#compartment, ..))
            -> DATUM_REFERENCE_COMPARTMENT(.., #datum, ..) -> DATUM(.., 'A')
@@ -150,10 +155,16 @@ class Tolerance:
     value_mm: float | None
     datums: tuple[str, ...] = ()
     modifiers: tuple[str, ...] = ()
+    zone_form: str = ""  # 'spherical' / 'cylindrical or circular' / 未指定なら空
 
     def key(self) -> tuple:
         """突き合わせ用。名前は CAD 由来で揺れるので使わない。"""
-        return (self.kind, round(self.value_mm, 6) if self.value_mm is not None else None, self.datums)
+        return (
+            self.kind,
+            round(self.value_mm, 6) if self.value_mm is not None else None,
+            self.datums,
+            self.zone_form,
+        )
 
 
 @dataclass
@@ -186,8 +197,27 @@ def _leaf_kind(e: Entity) -> str | None:
     return None
 
 
+def _zone_forms(model: Model) -> dict[int, str]:
+    """公差 -> 公差域の形。TOLERANCE_ZONE が公差を指している。"""
+    out: dict[int, str] = {}
+    for z in model.of("TOLERANCE_ZONE"):
+        if len(z.args) < 6:
+            continue
+        targets = z.args[4]
+        form = model.get(z.args[5])
+        if form is None or not form.args:
+            continue
+        name = str(form.args[0] or "")
+        for t in targets if isinstance(targets, list) else [targets]:
+            e = model.get(t)
+            if e is not None:
+                out[e.id] = name
+    return out
+
+
 def extract(model: Model) -> Extract:
     out = Extract(schema=model.schema)
+    forms = _zone_forms(model)
 
     seen: set[int] = set()
     for kind in TOLERANCE_KINDS:
@@ -216,6 +246,7 @@ def extract(model: Model) -> Extract:
                     value_mm=(val * unit.mm_per) if (val is not None and unit) else None,
                     datums=datums,
                     modifiers=modifiers,
+                    zone_form=forms.get(e.id, ""),
                 )
             )
 
