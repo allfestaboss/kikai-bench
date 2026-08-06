@@ -16,7 +16,9 @@
      "value_mm": 0.25400000000101597,
      "datums": [],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 148,
@@ -28,7 +30,9 @@
      "value_mm": 0.25400000000101597,
      "datums": [],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 147,
@@ -40,7 +44,9 @@
      "value_mm": 0.2540000000010185,
      "datums": [],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 107,
@@ -54,7 +60,9 @@
       "A"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 108,
@@ -69,7 +77,9 @@
       "B"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 134,
@@ -85,7 +95,9 @@
       "B"
      ],
      "modifiers": [],
-     "zone_form": "cylindrical or circular"
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 137,
@@ -100,7 +112,9 @@
       "G"
      ],
      "modifiers": [],
-     "zone_form": "cylindrical or circular"
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 136,
@@ -115,7 +129,9 @@
       "H"
      ],
      "modifiers": [],
-     "zone_form": "cylindrical or circular"
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 133,
@@ -131,7 +147,9 @@
       "B"
      ],
      "modifiers": [],
-     "zone_form": "cylindrical or circular"
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 112,
@@ -147,7 +165,9 @@
      "modifiers": [
       "MAXIMUM_MATERIAL_REQUIREMENT"
      ],
-     "zone_form": "cylindrical or circular"
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 113,
@@ -165,7 +185,9 @@
      "modifiers": [
       "MAXIMUM_MATERIAL_REQUIREMENT"
      ],
-     "zone_form": "cylindrical or circular"
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 114,
@@ -183,7 +205,9 @@
      "modifiers": [
       "MAXIMUM_MATERIAL_REQUIREMENT"
      ],
-     "zone_form": "cylindrical or circular"
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 111,
@@ -201,7 +225,9 @@
      "modifiers": [
       "MAXIMUM_MATERIAL_REQUIREMENT"
      ],
-     "zone_form": "cylindrical or circular"
+     "zone_form": "cylindrical or circular",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 135,
@@ -217,7 +243,9 @@
       "C"
      ],
      "modifiers": [],
-     "zone_form": "spherical"
+     "zone_form": "spherical",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 138,
@@ -233,7 +261,9 @@
       "J"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 139,
@@ -249,7 +279,9 @@
       "K"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 338,
@@ -263,7 +295,9 @@
       "D"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 340,
@@ -277,7 +311,9 @@
       "D"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 345,
@@ -291,7 +327,9 @@
       "D"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 347,
@@ -305,7 +343,9 @@
       "D"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 341,
@@ -321,7 +361,9 @@
       "C"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 342,
@@ -337,7 +379,9 @@
       "C"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 343,
@@ -353,7 +397,9 @@
       "C"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 348,
@@ -369,7 +415,9 @@
       "C"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 337,
@@ -385,7 +433,9 @@
       "C"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 339,
@@ -401,7 +451,9 @@
       "C"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 344,
@@ -417,7 +469,9 @@
       "C"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     },
     {
      "id": 346,
@@ -433,7 +487,9 @@
       "C"
      ],
      "modifiers": [],
-     "zone_form": ""
+     "zone_form": "",
+     "projected_length": null,
+     "projected_length_mm": null
     }
    ],
    "datums": [

@@ -12,6 +12,12 @@
                  単純形の SI_UNIT(dim, prefix, name) と索引が違う。ここを取り違えると
                  MILLI を読み落として換算が1000倍狂う（実際に踏んだ）
 
+  突出公差域 PROJECTED_ZONE_DEFINITION(#tolerance_zone, (), #projection_end, #length)
+           ASME Y14.5 の Ⓟ。ねじ穴などで、公差域を部品の外へ突き出させる指定。
+           突出長さは公差記入枠に Ⓟ.260 のように書かれる。
+           公差そのものではなく TOLERANCE_ZONE 側にぶら下がるので、
+           公差の実体だけ見ていると丸ごと落ちる。
+
   公差域   TOLERANCE_ZONE('',$,#shape,.F.,(#tolerance),#form)
            -> TOLERANCE_ZONE_FORM('spherical' | 'cylindrical or circular')
            円筒か球かで意味が全く違う（ASME Y14.5 の ⌀ と S⌀）。
@@ -190,6 +196,8 @@ class Tolerance:
     datums: tuple[str, ...] = ()
     modifiers: tuple[str, ...] = ()
     zone_form: str = ""  # 'spherical' / 'cylindrical or circular' / 未指定なら空
+    projected_length: float | None = None  # 突出公差域の長さ（ファイルの単位）
+    projected_length_mm: float | None = None
 
     def key(self) -> tuple:
         """突き合わせ用。名前は CAD 由来で揺れるので使わない。"""
@@ -198,6 +206,7 @@ class Tolerance:
             round(self.value_mm, 6) if self.value_mm is not None else None,
             self.datums,
             self.zone_form,
+            round(self.projected_length_mm, 6) if self.projected_length_mm is not None else None,
         )
 
 
@@ -231,27 +240,44 @@ def _leaf_kind(e: Entity) -> str | None:
     return None
 
 
-def _zone_forms(model: Model) -> dict[int, str]:
-    """公差 -> 公差域の形。TOLERANCE_ZONE が公差を指している。"""
-    out: dict[int, str] = {}
+def _zone_info(model: Model) -> tuple[dict[int, str], dict[int, tuple[float, Unit | None]]]:
+    """公差 -> (公差域の形, 突出長さ)。どちらも TOLERANCE_ZONE 側にぶら下がる。"""
+    forms: dict[int, str] = {}
+    zone_to_tols: dict[int, list[int]] = {}
     for z in model.of("TOLERANCE_ZONE"):
         if len(z.args) < 6:
             continue
         targets = z.args[4]
-        form = model.get(z.args[5])
-        if form is None or not form.args:
-            continue
-        name = str(form.args[0] or "")
+        ids = []
         for t in targets if isinstance(targets, list) else [targets]:
             e = model.get(t)
             if e is not None:
-                out[e.id] = name
-    return out
+                ids.append(e.id)
+        zone_to_tols[z.id] = ids
+        form = model.get(z.args[5])
+        if form is not None and form.args:
+            name = str(form.args[0] or "")
+            for i in ids:
+                forms[i] = name
+
+    projected: dict[int, tuple[float, Unit | None]] = {}
+    for pz in model.of("PROJECTED_ZONE_DEFINITION"):
+        if len(pz.args) < 4:
+            continue
+        zone = model.get(pz.args[0])
+        if zone is None:
+            continue
+        val, unit = _magnitude(model, pz.args[3])
+        if val is None:
+            continue
+        for i in zone_to_tols.get(zone.id, []):
+            projected[i] = (val, unit)
+    return forms, projected
 
 
 def extract(model: Model) -> Extract:
     out = Extract(schema=model.schema)
-    forms = _zone_forms(model)
+    forms, projected = _zone_info(model)
 
     seen: set[int] = set()
     for kind in TOLERANCE_KINDS:
@@ -271,6 +297,11 @@ def extract(model: Model) -> Extract:
             #   複合形 GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE((#datum_system))
             #   単純形 XXX_TOLERANCE(name, desc, #mag, #aspect, (#datum_system))
             # 後者は第5引数。複合形だけ見ていると単純形のデータムを丸ごと落とす。
+            proj = projected.get(e.id)
+            if proj is not None:
+                # 公差記入枠では Ⓟ として現れるので、修飾子としても持たせる
+                modifiers = modifiers + ("PROJECTED_TOLERANCE_ZONE",)
+
             dref = e.parts.get("GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE") or []
             systems = dref[0] if dref else None
             if systems is None and len(e.args) > 4:
@@ -288,6 +319,8 @@ def extract(model: Model) -> Extract:
                     datums=datums,
                     modifiers=modifiers,
                     zone_form=forms.get(e.id, ""),
+                    projected_length=proj[0] if proj else None,
+                    projected_length_mm=(proj[0] * proj[1].mm_per) if (proj and proj[1]) else None,
                 )
             )
 

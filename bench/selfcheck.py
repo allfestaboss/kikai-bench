@@ -151,12 +151,40 @@ def hand_complex_magnitude() -> dict:
     }
 
 
+def hand_projected() -> dict:
+    """FTC-09 の突出公差域。公差の実体側には何も書かれていない例。
+
+        #10836=(GEOMETRIC_TOLERANCE('Position.37','',#10837,#8630)
+                GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE((#10835))POSITION_TOLERANCE());
+        #10839=TOLERANCE_ZONE('',$,#6023,.F.,(#10836),#10838);
+        #10841=PROJECTED_ZONE_DEFINITION(#10839,(),#8182,#10840);
+        #10840=LENGTH_MEASURE_WITH_UNIT(LENGTH_MEASURE(0.260000),#12);
+
+    公差 -> TOLERANCE_ZONE -> PROJECTED_ZONE_DEFINITION と2段たどらないと出てこない。
+    公差の実体だけ見ていると Ⓟ が丸ごと落ちる。
+    NIST の定義では ATC61「⌖ | ⌀.050 Ⓟ.260 | A | B | C」にあたる。
+    """
+    return {
+        "id": 10836,
+        "kind": "POSITION_TOLERANCE",
+        "name": "Position.37",
+        "value": 0.050000,
+        "unit": "millimetre",
+        "value_mm": 0.050000,
+        "datums": ("A", "B", "C"),
+        "zone_form": "cylindrical or circular",
+        "projected_length": 0.260000,
+        "projected_length_mm": 0.260000,
+    }
+
+
 HANDS = [
     (TARGET_FTC06, hand_flatness()),
     (TARGET_FTC06, hand_position()),
     (TARGET_FTC06, hand_spherical()),
     (CORPUS / "nist_ftc_09_asme1_ap242-e1.stp", hand_millimetre()),
     (CORPUS / "nist_ftc_08_asme1_ap242-e2.stp", hand_complex_magnitude()),
+    (CORPUS / "nist_ftc_09_asme1_ap242-e1.stp", hand_projected()),
 ]
 TOL = 1e-9
 
@@ -172,7 +200,7 @@ def main() -> int:
             print(f"\n[{path.name}] 幾何公差 {len(x.tolerances)}件")
         by_id = cache[path]
         got = by_id.get(hand["id"])
-        print(f"--- #{hand['id']} {hand['name']} ---")
+        print(f"--- #{hand['id']} {hand.get('name', '(名前省略)')} ---")
         if got is None:
             print("  NG: 抽出側に存在しない")
             ok = False
@@ -185,8 +213,14 @@ def main() -> int:
             match = want == have
             ok = ok and match
             print(f"  {key:<10} 手={want!s:<34} 抽出={have!s:<34} {'' if match else '<-- NG'}")
-        for key in ("value", "value_mm"):
+        for key in ("value", "value_mm", "projected_length", "projected_length_mm"):
+            if key not in hand:
+                continue
             want, have = hand[key], getattr(got, key)
+            if have is None:
+                ok = False
+                print(f"  {key:<10} 手={want:<34.12f} 抽出=None  <-- NG")
+                continue
             diff = abs(want - have)
             ok = ok and diff <= TOL
             print(f"  {key:<10} 手={want:<34.12f} 抽出={have:<34.12f} 差={diff:.2e}"
