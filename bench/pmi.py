@@ -3,8 +3,14 @@
 実物（NIST の AP242 ファイル）で確認した経路だけを実装している。
 
   公差値   GEOMETRIC_TOLERANCE(.., #magnitude, ..)
-           -> LENGTH_MEASURE_WITH_UNIT('LENGTH_MEASURE(v)', #unit)
-           -> CONVERSION_BASED_UNIT('inch', #factor, ..) -> SI_UNIT(*, MILLI, METRE)
+           magnitude は書き出したCADによって3通りの形が出る（実物で確認）:
+             (a) LENGTH_MEASURE_WITH_UNIT(LENGTH_MEASURE(v), #unit)          FTC-06/09
+             (b) 複合実体で MEASURE_WITH_UNIT(POSITIVE_LENGTH_MEASURE(v), #unit) FTC-08/11
+           単位も2通り:
+             (c) CONVERSION_BASED_UNIT('inch'|'INCH', #factor, ..)  -> factor が mm 換算
+             (d) 複合 SI_UNIT。パートは [prefix, name] の2つで、
+                 単純形の SI_UNIT(dim, prefix, name) と索引が違う。ここを取り違えると
+                 MILLI を読み落として換算が1000倍狂う（実際に踏んだ）
 
   公差域   TOLERANCE_ZONE('',$,#shape,.F.,(#tolerance),#form)
            -> TOLERANCE_ZONE_FORM('spherical' | 'cylindrical or circular')
@@ -77,13 +83,18 @@ def _unit(model: Model, ref) -> Unit | None:
         factor = model.get(args[1]) if len(args) > 1 else None
         mm = 1.0
         if factor is not None:
-            mm = _measure_value(factor.args[0]) or 1.0
-        return Unit(name=str(name), mm_per=mm)
+            src = factor.args or factor.parts.get("MEASURE_WITH_UNIT") or []
+            mm = (_measure_value(src[0]) if src else None) or 1.0
+        return Unit(name=str(name).lower(), mm_per=mm)
     if "SI_UNIT" in e.types:
-        args = e.parts.get("SI_UNIT") or e.args
-        prefix = args[1] if len(args) > 1 else None
-        mm = 1.0 if prefix == "MILLI" else 1000.0  # METRE のとき
-        return Unit(name=f"{prefix or ''}{args[2] if len(args) > 2 else 'METRE'}".lower(), mm_per=mm)
+        # 複合実体のパートは (prefix, name)。単純形は (dimensions, prefix, name)。
+        args = e.parts.get("SI_UNIT")
+        if args is None:
+            args = e.args[1:] if len(e.args) > 2 else e.args
+        prefix = args[0] if len(args) > 0 else None
+        name = args[1] if len(args) > 1 else "METRE"
+        mm = {"MILLI": 1.0, "CENTI": 10.0, "MICRO": 0.001}.get(str(prefix or ""), 1000.0)
+        return Unit(name=f"{prefix or ''}{name}".lower(), mm_per=mm)
     return None
 
 
@@ -91,8 +102,18 @@ def _magnitude(model: Model, ref) -> tuple[float | None, Unit | None]:
     e = model.get(ref)
     if e is None:
         return None, None
-    val = _measure_value(e.args[0]) if e.args else None
-    unit = _unit(model, e.args[1]) if len(e.args) > 1 else None
+    # 単純形なら args、複合形なら値と単位を持つパートを探す
+    src = e.args
+    if not src:
+        for part in ("MEASURE_WITH_UNIT", "LENGTH_MEASURE_WITH_UNIT"):
+            cand = e.parts.get(part)
+            if cand and len(cand) >= 2:
+                src = cand
+                break
+    if not src:
+        return None, None
+    val = _measure_value(src[0])
+    unit = _unit(model, src[1]) if len(src) > 1 else None
     return val, unit
 
 
@@ -118,12 +139,24 @@ def _datums(model: Model, systems) -> tuple[str, ...]:
     return tuple(out)
 
 
-def _datum_label(model: Model, ref) -> str | None:
+def _datum_label(model: Model, ref, depth: int = 0) -> str | None:
+    """データム記号を取る。間に1段はさまる形（DATUM_REFERENCE_ELEMENT 等）もある。
+
+    記号の位置に参照が入っていたら、もう一段たどる。
+    ここで str() を通してしまうと Ref が '#437' という文字列になり、
+    解決に失敗したことが値のように見えてしまう（実際に踏んだ）。
+    """
+    if depth > 3:
+        return None
     d = model.get(ref)
     if d is None:
         return None
     label = d.args[4] if len(d.args) > 4 else None
-    return str(label) if label else None
+    if isinstance(label, Ref):
+        return _datum_label(model, label, depth + 1)
+    if isinstance(label, str) and label:
+        return label
+    return None
 
 
 def _compartment_labels(model: Model, base) -> list[str]:
@@ -136,6 +169,7 @@ def _compartment_labels(model: Model, base) -> list[str]:
         labels = [
             _datum_label(model, Ref(int(n))) for n in _TYPED_REFS.findall(base)
         ]
+        labels = [x for x in labels if isinstance(x, str)]
         joined = "-".join([x for x in labels if x])
         return [joined] if joined else []
     label = _datum_label(model, base)
@@ -233,8 +267,15 @@ def extract(model: Model) -> Extract:
             val, unit = _magnitude(model, base[2])
             mods = e.parts.get("GEOMETRIC_TOLERANCE_WITH_MODIFIERS") or []
             modifiers = tuple(str(x) for x in (mods[0] if mods and isinstance(mods[0], list) else []))
+            # データム参照は2通りの入り方がある（実物で確認）:
+            #   複合形 GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE((#datum_system))
+            #   単純形 XXX_TOLERANCE(name, desc, #mag, #aspect, (#datum_system))
+            # 後者は第5引数。複合形だけ見ていると単純形のデータムを丸ごと落とす。
             dref = e.parts.get("GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE") or []
-            datums = _datums(model, dref[0] if dref else None)
+            systems = dref[0] if dref else None
+            if systems is None and len(e.args) > 4:
+                systems = e.args[4]
+            datums = _datums(model, systems)
             out.tolerances.append(
                 Tolerance(
                     id=e.id,

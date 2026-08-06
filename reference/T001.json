@@ -50,7 +50,9 @@
      "value": 0.012000000000048,
      "unit": "inch",
      "value_mm": 0.3048000000012192,
-     "datums": [],
+     "datums": [
+      "A"
+     ],
      "modifiers": [],
      "zone_form": ""
     },
@@ -62,7 +64,10 @@
      "value": 0.012000000000048,
      "unit": "inch",
      "value_mm": 0.3048000000012192,
-     "datums": [],
+     "datums": [
+      "A",
+      "B"
+     ],
      "modifiers": [],
      "zone_form": ""
     },

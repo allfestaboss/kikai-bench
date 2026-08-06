@@ -15,7 +15,14 @@ from .pmi import extract
 from .step import load
 
 ROOT = Path(__file__).resolve().parent.parent
-TARGET = ROOT / "corpus" / "nist" / "nist_ftc_06_asme1_ap242-e2.stp"
+CORPUS = ROOT / "corpus" / "nist"
+
+# 較正は1ファイルでは足りない。書き出したCADによって magnitude と単位の
+# 持ち方が違い、FTC-06 だけで合わせていたら FTC-08/09/11 の取り違えを
+# 素通りしていた（実際に踏んだ）。形式の違う3ファイルで較正する。
+
+
+TARGET_FTC06 = CORPUS / "nist_ftc_06_asme1_ap242-e2.stp"
 
 
 def hand_flatness() -> dict:
@@ -98,21 +105,72 @@ def hand_spherical() -> dict:
     }
 
 
-HANDS = [hand_flatness(), hand_position(), hand_spherical()]
+def hand_millimetre() -> dict:
+    """FTC-09 の Position.1。単位が SI（複合 SI_UNIT）の系。
+
+        #9771=(GEOMETRIC_TOLERANCE('Position.1','',#9772,#8244)…POSITION_TOLERANCE());
+        #9772=LENGTH_MEASURE_WITH_UNIT(LENGTH_MEASURE(0.016000),#12);
+        #12=(LENGTH_UNIT()NAMED_UNIT(*)SI_UNIT(.MILLI.,.METRE.));
+
+    複合実体の SI_UNIT パートは (prefix, name) の2つ。単純形の
+    SI_UNIT(dimensions, prefix, name) と索引が1つずれる。ここを取り違えると
+    MILLI を読み落として換算が1000倍狂う。
+    """
+    return {
+        "id": 9771,
+        "kind": "POSITION_TOLERANCE",
+        "name": "Position.1",
+        "value": 0.016000,
+        "unit": "millimetre",
+        "value_mm": 0.016000,  # 既に mm なので換算は 1 倍
+    }
+
+
+def hand_complex_magnitude() -> dict:
+    """FTC-08 の Feature Control Frame (32)。magnitude が複合実体の系。
+
+        #59=(GEOMETRIC_TOLERANCE('Feature Control Frame (32)',…,#582,#398)…);
+        #582=(LENGTH_MEASURE_WITH_UNIT()MEASURE_REPRESENTATION_ITEM()
+              MEASURE_WITH_UNIT(POSITIVE_LENGTH_MEASURE(0.03),#10068)
+              QUALIFIED_REPRESENTATION_ITEM((#630))REPRESENTATION_ITEM('nominal value'));
+        #10068=(CONVERSION_BASED_UNIT('INCH',#10070)LENGTH_UNIT()NAMED_UNIT(#10069));
+        #10070=LENGTH_MEASURE_WITH_UNIT(LENGTH_MEASURE(25.4),#10071);
+
+    値と単位が args ではなく MEASURE_WITH_UNIT パートに入る。
+    測度の型も LENGTH_MEASURE ではなく POSITIVE_LENGTH_MEASURE。
+    単位名も 'inch' ではなく大文字の 'INCH'。
+    """
+    return {
+        "id": 59,
+        "kind": "POSITION_TOLERANCE",
+        "name": "Feature Control Frame (32)",
+        "value": 0.03,
+        "unit": "inch",  # 大文字は小文字に正規化する
+        "value_mm": 0.03 * 25.4,
+        "datums": ("D", "B", "C"),
+    }
+
+
+HANDS = [
+    (TARGET_FTC06, hand_flatness()),
+    (TARGET_FTC06, hand_position()),
+    (TARGET_FTC06, hand_spherical()),
+    (CORPUS / "nist_ftc_09_asme1_ap242-e1.stp", hand_millimetre()),
+    (CORPUS / "nist_ftc_08_asme1_ap242-e2.stp", hand_complex_magnitude()),
+]
 TOL = 1e-9
 
 
 def main() -> int:
-    x = extract(load(TARGET))
-    by_id = {t.id: t for t in x.tolerances}
-
-    print(f"=== 較正 / {TARGET.name} ===")
-    print(f"スキーマ: {x.schema}")
-    print(f"抽出: 幾何公差 {len(x.tolerances)}件 / データム {len(x.datums)}件")
-    print()
-
+    print("=== 較正 ===")
+    cache: dict[Path, dict] = {}
     ok = True
-    for hand in HANDS:
+    for path, hand in HANDS:
+        if path not in cache:
+            x = extract(load(path))
+            cache[path] = {t.id: t for t in x.tolerances}
+            print(f"\n[{path.name}] 幾何公差 {len(x.tolerances)}件")
+        by_id = cache[path]
         got = by_id.get(hand["id"])
         print(f"--- #{hand['id']} {hand['name']} ---")
         if got is None:
