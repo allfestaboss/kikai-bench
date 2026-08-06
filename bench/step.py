@@ -15,7 +15,12 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 # 実体1件。 #107=PERPENDICULARITY_TOLERANCE('Perpendicularity.1','',#10003,#993,(#331));
-_ENTITY = re.compile(r"#(\d+)\s*=\s*(.*?);\s*(?=#\d+\s*=|ENDSEC)", re.S)
+#
+# 先読みに \Z を入れてあるのは、DATA セクションの**最後の実体**を落とさないため。
+# body は ENDSEC の手前で切っているので、末尾には次の #id= も ENDSEC も来ない。
+# これを入れ忘れると全ファイルで最後の1実体が黙って消える（実際に踏んだ。
+# nist_stc_07 の最後の実体が幾何公差で、宣言22件に対し21件しか取れていなかった）。
+_ENTITY = re.compile(r"#(\d+)\s*=\s*(.*?);\s*(?=#\d+\s*=|ENDSEC|\Z)", re.S)
 _SIMPLE = re.compile(r"^([A-Z_0-9]+)\s*\((.*)\)$", re.S)
 _COMPLEX_PART = re.compile(r"([A-Z_0-9]+)\s*\(")
 
