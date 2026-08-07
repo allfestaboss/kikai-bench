@@ -204,6 +204,29 @@ def hand_composite() -> dict:
     }
 
 
+def hand_unit_area() -> dict:
+    """ftc_07 の単位面積あたりの平面度。記入枠では ▱ .01 / Ø1.00 と書かれる。
+
+        #14257=( FLATNESS_TOLERANCE()
+                 GEOMETRIC_TOLERANCE('Flatness.1','',#14256,#14252)
+                 GEOMETRIC_TOLERANCE_WITH_DEFINED_AREA_UNIT(.CIRCULAR.,$)
+                 GEOMETRIC_TOLERANCE_WITH_DEFINED_UNIT(#14255) );
+
+    「面全体で0.01」ではなく「Ø1.00インチの範囲につき0.01」。
+    落とすと規制の強さがまったく変わる。
+    NIST の定義では ATC71「▱ | .01 / Ø1.00」にあたる。
+    """
+    return {
+        "id": 14257,
+        "kind": "FLATNESS_TOLERANCE",
+        "name": "Flatness.1",
+        "unit": "inch",
+        "unit_area_shape": "CIRCULAR",
+        "unit_length": 1.0,
+        "unit_length_mm": 25.4,
+    }
+
+
 HANDS = [
     (TARGET_FTC06, hand_flatness()),
     (TARGET_FTC06, hand_position()),
@@ -212,6 +235,7 @@ HANDS = [
     (CORPUS / "nist_ftc_08_asme1_ap242-e2.stp", hand_complex_magnitude()),
     (CORPUS / "nist_ftc_09_asme1_ap242-e1.stp", hand_projected()),
     (TARGET_FTC06, hand_composite()),
+    (CORPUS / "nist_ftc_07_asme1_ap242-e2.stp", hand_unit_area()),
 ]
 TOL = 1e-9
 
@@ -233,7 +257,7 @@ def main() -> int:
             ok = False
             continue
         for key in ("kind", "name", "unit", "datums", "zone_form",
-                    "composite_role", "composite_partner"):
+                    "composite_role", "composite_partner", "unit_area_shape"):
             want = hand.get(key)
             if key not in hand:
                 continue
@@ -241,7 +265,8 @@ def main() -> int:
             match = want == have
             ok = ok and match
             print(f"  {key:<10} 手={want!s:<34} 抽出={have!s:<34} {'' if match else '<-- NG'}")
-        for key in ("value", "value_mm", "projected_length", "projected_length_mm"):
+        for key in ("value", "value_mm", "projected_length", "projected_length_mm",
+                    "unit_length", "unit_length_mm"):
             if key not in hand:
                 continue
             want, have = hand[key], getattr(got, key)

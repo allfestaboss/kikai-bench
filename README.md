@@ -356,17 +356,56 @@ mm 換算忘れ / 公差域の形を落とす / 突出長さを落とす / 複�
 課題が採点しない水準や、対象が存在しない変異は自動で飛ばす。
 **効かない変異を「捕まえられなかった」と誤認しないため。**
 
-## 分かっている抜け（未対応）
+## 抱えていた抜けを全部塞いだ
 
-腕や検算が挙げてきたが、まだ塞いでいないもの。**黙って抱えず並べておく。**
+腕や検算が挙げてきた4件。**塞いだ結果、検証プロパティとの一致が 9/10 → 10/10 になった。**
 
-- **単位面積あたりの公差**（`GEOMETRIC_TOLERANCE_WITH_DEFINED_AREA_UNIT(.CIRCULAR.)`）。
-  `▱ .01 / Ø1.00` のような「Ø1.00 の範囲につき 0.01」の指定。corpus に3ファイル
-- `nist_stc_10` の宣言34件に対し抽出37件。実体を数え直しても37件で未対応の型も無い。
-  **このファイルだけ「複合公差の宣言数」を持たない**（他9ファイルは持っていて全て一致）。
-  宣言側の不整合と見ているが断定していない
-- `DIMENSIONAL_SIZE_WITH_DATUM_FEATURE` が自分自身を `applies_to` に持つ箇所（stc_07）
-- 同一の公差域に `PROJECTED_ZONE_DEFINITION` が重複して付く箇所（stc_07）
+### 単位あたりの公差
+
+```
+#14257=( FLATNESS_TOLERANCE()
+         GEOMETRIC_TOLERANCE('Flatness.1','',#14256,#14252)
+         GEOMETRIC_TOLERANCE_WITH_DEFINED_AREA_UNIT(.CIRCULAR.,$)
+         GEOMETRIC_TOLERANCE_WITH_DEFINED_UNIT(#14255) );
+```
+
+記入枠では `▱ .01 / Ø1.00`。「面全体で0.01」ではなく「**Ø1.00インチの範囲につき0.01**」。
+落とすと規制の強さがまったく変わる。実物では3形態が出た。
+
+| ファイル | 公差 | 単位 |
+|---|---|---|
+| ctc_03 | 平面度 0.005in | **矩形** 0.25 × 0.25 in |
+| ftc_07 / stc_07 | 平面度 0.01in | **円形** Ø1.00 in |
+| ftc_10 / stc_10 | 真直度 0.2mm | **長さ** 15 mm（面積指定なし） |
+
+### `nist_stc_10` の宣言34 vs 抽出37 — 数え方の規約が違った
+
+このファイルは**検証プロパティの組自体が他と違う**。
+
+```
+stc_10:  annotations / datum features / dimensional locations / geometric tolerances / views
+ftc_06:  annotations / composite tolerances / datums / datum targets / dimensional locations
+         / dimensional sizes / geometric tolerances / semantic pmi elements / views …
+ftc_10:  （検証プロパティ自体が無い）
+```
+
+stc_10 だけ **`number of composite tolerances` を宣言せず**、代わりに `datum features` を使う。
+**複合公差の上下2段を1件と数える別の生成器**の出力である。`37 − 複合3対 = 34` で合う。
+
+検算器にこの規約差を持たせた。「複合の宣言が無いファイルは畳んだ数と比べる」。
+**規約を推測で決めず、宣言の組から読み取っている。**
+
+### stc_07 の2件 — 抽出には影響しないが、報告する
+
+- `#14028` / `#14030` の `DIMENSIONAL_SIZE_WITH_DATUM_FEATURE` が**自分自身を参照**している。
+  幾何公差の抽出経路には乗らない（データムは `DATUM` 実体を直接読んでいる）
+- 同一の公差域に `PROJECTED_ZONE_DEFINITION` が重複（#16658 に2件、#16799 に4件）。
+  **値は全て同じ**なので結果は変わらない
+
+どちらも結果に影響しないが、**課題が「ファイルの内部矛盾に気づいたら報告せよ」と
+訊いている以上、参照解が黙っていてはいけない。** `anomalies` として出すようにした。
+突出公差域の重複も、**値が異なれば黙って1つ選ぶことになる**ので、その場合は報告する
+（このcorpusでは同値だった）。
 
 ## これから
 

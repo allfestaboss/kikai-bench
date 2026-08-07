@@ -130,6 +130,21 @@ def evil_drop_projected(ref):
     return s
 
 
+def evil_drop_unit_area(ref):
+    """単位あたりの公差の「〜につき」を落とす。
+
+    `▱ .01 / Ø1.00` が `▱ .01` になる。実物では0.01インチの平面度が
+    「Ø1.00インチの範囲につき」なのか「面全体につき」なのかの違いで、
+    意味がまったく変わる。
+    """
+    s = _sub(ref)
+    for _, t in _each_tol(s):
+        t["unit_length"] = None
+        t["unit_length_mm"] = None
+        t["unit_area_shape"] = ""
+    return s
+
+
 def evil_drop_composite(ref):
     """複合公差の対を落とす。"""
     s = _sub(ref)
@@ -174,6 +189,8 @@ EVIL = [
      lambda r: _has(r, lambda t: t.get("zone_form"))),
     ("evil_drop_projected", evil_drop_projected, "Q5",
      lambda r: _has(r, lambda t: t.get("projected_length_mm") is not None)),
+    ("evil_drop_unit_area", evil_drop_unit_area, "Q5",
+     lambda r: _has(r, lambda t: t.get("unit_length_mm") is not None)),
     ("evil_drop_composite", evil_drop_composite, "Q6",
      lambda r: any(rr.get("composites") for rr in r["results"])),
 ]

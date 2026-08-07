@@ -20,7 +20,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 148,
@@ -36,7 +41,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 147,
@@ -52,7 +62,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 107,
@@ -70,7 +85,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 108,
@@ -89,7 +109,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 134,
@@ -109,7 +134,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 137,
@@ -128,7 +158,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 136,
@@ -147,7 +182,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 133,
@@ -167,7 +207,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 112,
@@ -187,7 +232,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 113,
@@ -209,7 +259,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 114,
@@ -231,7 +286,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 111,
@@ -253,7 +313,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 135,
@@ -273,7 +338,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 138,
@@ -293,7 +363,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 139,
@@ -313,7 +388,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 338,
@@ -331,7 +411,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "lower",
-     "composite_partner": 337
+     "composite_partner": 337,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 340,
@@ -349,7 +434,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "lower",
-     "composite_partner": 339
+     "composite_partner": 339,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 345,
@@ -367,7 +457,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "lower",
-     "composite_partner": 344
+     "composite_partner": 344,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 347,
@@ -385,7 +480,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "lower",
-     "composite_partner": 346
+     "composite_partner": 346,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 341,
@@ -405,7 +505,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 342,
@@ -425,7 +530,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 343,
@@ -445,7 +555,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 348,
@@ -465,7 +580,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "",
-     "composite_partner": null
+     "composite_partner": null,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 337,
@@ -485,7 +605,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "upper",
-     "composite_partner": 338
+     "composite_partner": 338,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 339,
@@ -505,7 +630,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "upper",
-     "composite_partner": 340
+     "composite_partner": 340,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 344,
@@ -525,7 +655,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "upper",
-     "composite_partner": 345
+     "composite_partner": 345,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     },
     {
      "id": 346,
@@ -545,7 +680,12 @@
      "projected_length": null,
      "projected_length_mm": null,
      "composite_role": "upper",
-     "composite_partner": 347
+     "composite_partner": 347,
+     "unit_length": null,
+     "unit_length_mm": null,
+     "unit_area_shape": "",
+     "unit_length2": null,
+     "unit_length2_mm": null
     }
    ],
    "datums": [
@@ -578,6 +718,7 @@
      347
     ]
    ],
+   "anomalies": [],
    "counts": {
     "FLATNESS_TOLERANCE": 3,
     "PERPENDICULARITY_TOLERANCE": 2,

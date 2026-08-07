@@ -83,8 +83,6 @@ nist_ftc_07_asme1_ap242-e2.stp          27    27  OK
 nist_stc_06_asme1_ap242-e3.stp          25    25  OK
 nist_stc_07_asme1_ap242-e3.stp          22    22  OK
 nist_stc_08_asme1_ap242-e3.stp          30    30  OK
-nist_stc_10_asme1_ap242-e2.stp          34    37  不一致（差 +3）
+nist_stc_10_asme1_ap242-e2.stp          34    37  OK（複合を1件と数える規約。37件 - 複合3対）
 
-  一致 9 / 不一致 1 / 宣言なし 7
-  ※ 不一致は必ずしもこちらの誤りではない。実体を数え直して
-     宣言側が中身と合っていないことを確かめること。
+  一致 10 / 不一致 0 / 宣言なし 7

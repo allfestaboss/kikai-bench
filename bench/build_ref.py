@@ -36,6 +36,7 @@ def build(task_id: str) -> dict:
                                for t in x.tolerances],
                 "datums": [d.label for d in x.datums],
                 "composites": [list(c) for c in x.composites],
+                "anomalies": x.anomalies,
                 "counts": x.counts(),
             }
         )

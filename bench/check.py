@@ -41,7 +41,7 @@ LEVEL_NAME = {
     "Q2": "種別",
     "Q3": "値と mm 換算",
     "Q4": "データムと優先順位",
-    "Q5": "修飾子・公差域・突出",
+    "Q5": "修飾子・公差域・突出・単位あたり",
     "Q6": "複合公差の対",
 }
 
@@ -158,7 +158,10 @@ def grade(ref_doc: dict, sub_doc: dict, levels: list[str] | None = None) -> dict
             ("Q4", lambda r, s: _norm_list(s.get("datums")) == _norm_list(r.get("datums"))),
             ("Q5", lambda r, s: _norm_enum(s.get("modifiers")) == _norm_enum(r.get("modifiers"))
                                 and str(s.get("zone_form") or "") == str(r.get("zone_form") or "")
-                                and close(s.get("projected_length_mm"), r.get("projected_length_mm"))),
+                                and close(s.get("projected_length_mm"), r.get("projected_length_mm"))
+                                and close(s.get("unit_length_mm"), r.get("unit_length_mm"))
+                                and str(s.get("unit_area_shape") or "").strip(".").upper()
+                                    == str(r.get("unit_area_shape") or "").strip(".").upper()),
         ):
             if level not in active:
                 continue

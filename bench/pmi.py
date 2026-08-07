@@ -12,6 +12,13 @@
                  単純形の SI_UNIT(dim, prefix, name) と索引が違う。ここを取り違えると
                  MILLI を読み落として換算が1000倍狂う（実際に踏んだ）
 
+  単位あたりの公差
+           GEOMETRIC_TOLERANCE_WITH_DEFINED_UNIT(#長さ)          「〜につき」の長さ
+           GEOMETRIC_TOLERANCE_WITH_DEFINED_AREA_UNIT(.CIRCULAR.|.RECTANGULAR., #第2長さ)
+           記入枠では「.01 / Ø1.00」や「0.2 / 15」のように書かれる。
+           面積の指定が無ければ単位長さあたり。実物では3形態が出た:
+             円形域 Ø1.00 につき / 矩形域 0.25x0.25 につき / 長さ 15mm につき
+
   複合公差 GEOMETRIC_TOLERANCE_RELATIONSHIP('composite','',#上段,#下段)
            1つの公差記入枠が上下2段になっている形。上段は完全なデータム系に対する
            位置を、下段はその部分集合に対する姿勢・形状を規制する。
@@ -206,6 +213,11 @@ class Tolerance:
     projected_length_mm: float | None = None
     composite_role: str = ""  # 'upper' / 'lower' / 単独なら空
     composite_partner: int | None = None  # 対になるもう一段の実体ID
+    unit_length: float | None = None  # 「〜につき」の長さ（ファイルの単位）
+    unit_length_mm: float | None = None
+    unit_area_shape: str = ""  # 'CIRCULAR' / 'RECTANGULAR' / 面積指定が無ければ空
+    unit_length2: float | None = None  # 矩形域の第2辺
+    unit_length2_mm: float | None = None
 
     def key(self) -> tuple:
         """突き合わせ用。名前は CAD 由来で揺れるので使わない。"""
@@ -216,6 +228,8 @@ class Tolerance:
             self.zone_form,
             round(self.projected_length_mm, 6) if self.projected_length_mm is not None else None,
             self.composite_role,
+            round(self.unit_length_mm, 6) if self.unit_length_mm is not None else None,
+            self.unit_area_shape,
         )
 
 
@@ -231,6 +245,7 @@ class Extract:
     tolerances: list[Tolerance] = field(default_factory=list)
     datums: list[Datum] = field(default_factory=list)
     composites: list[tuple[int, int]] = field(default_factory=list)  # (上段, 下段)
+    anomalies: list[str] = field(default_factory=list)  # ファイルの内部矛盾
 
     @property
     def has_semantic_pmi(self) -> bool:
@@ -248,6 +263,23 @@ def _leaf_kind(e: Entity) -> str | None:
         if t in TOLERANCE_KINDS:
             return t
     return None
+
+
+def _self_references(model: Model) -> list[str]:
+    """自分自身を参照している実体。実物（stc_07）で出た。
+
+    幾何公差の抽出経路には乗らないが、課題が「ファイルの内部矛盾に
+    気づいたら報告せよ」と訊いている以上、参照解も黙っていてはいけない。
+    """
+    out: list[str] = []
+    for e in model.entities.values():
+        src = e.args or [v for p in e.parts.values() for v in p]
+        flat = []
+        for a in src:
+            flat.extend(a if isinstance(a, list) else [a])
+        if any(isinstance(a, Ref) and int(a) == e.id for a in flat):
+            out.append(f"#{e.id} ({e.type}) が自分自身を参照している")
+    return out
 
 
 def _composites(model: Model) -> tuple[list[tuple[int, int]], dict[int, tuple[str, int]]]:
@@ -287,6 +319,8 @@ def _zone_info(model: Model) -> tuple[dict[int, str], dict[int, tuple[float, Uni
                 forms[i] = name
 
     projected: dict[int, tuple[float, Unit | None]] = {}
+    seen_zone: dict[int, float] = {}
+    notes: list[str] = []
     for pz in model.of("PROJECTED_ZONE_DEFINITION"):
         if len(pz.args) < 4:
             continue
@@ -296,15 +330,26 @@ def _zone_info(model: Model) -> tuple[dict[int, str], dict[int, tuple[float, Uni
         val, unit = _magnitude(model, pz.args[3])
         if val is None:
             continue
+        # 同じ公差域に突出定義が複数ぶら下がることがある（実物で確認）。
+        # 値が同じなら害は無いが、違えば黙って1つ選ぶことになる。それは報告する。
+        prev = seen_zone.get(zone.id)
+        if prev is not None and abs(prev - val) > 1e-9:
+            notes.append(
+                f"公差域 #{zone.id} に値の異なる PROJECTED_ZONE_DEFINITION が複数ある"
+                f"（{prev} と {val}）。1つを選ばざるを得ない"
+            )
+        seen_zone[zone.id] = val
         for i in zone_to_tols.get(zone.id, []):
             projected[i] = (val, unit)
-    return forms, projected
+    return forms, projected, notes
 
 
 def extract(model: Model) -> Extract:
     out = Extract(schema=model.schema)
-    forms, projected = _zone_info(model)
+    forms, projected, zone_notes = _zone_info(model)
+    out.anomalies.extend(zone_notes)
     out.composites, roles = _composites(model)
+    out.anomalies.extend(_self_references(model))
 
     seen: set[int] = set()
     for kind in TOLERANCE_KINDS:
@@ -331,6 +376,13 @@ def extract(model: Model) -> Extract:
             # 参照解自身が破ってはいけない。
             proj = projected.get(e.id)
 
+            # 単位あたりの公差。公差そのものの複合実体にパートとして付く。
+            uL = e.parts.get("GEOMETRIC_TOLERANCE_WITH_DEFINED_UNIT") or []
+            uA = e.parts.get("GEOMETRIC_TOLERANCE_WITH_DEFINED_AREA_UNIT") or []
+            ul, uu = _magnitude(model, uL[0]) if uL else (None, None)
+            shape = str(uA[0]) if (uA and uA[0]) else ""
+            u2, u2u = _magnitude(model, uA[1]) if (len(uA) > 1 and uA[1] is not None) else (None, None)
+
             dref = e.parts.get("GEOMETRIC_TOLERANCE_WITH_DATUM_REFERENCE") or []
             systems = dref[0] if dref else None
             if systems is None and len(e.args) > 4:
@@ -352,6 +404,11 @@ def extract(model: Model) -> Extract:
                     projected_length_mm=(proj[0] * proj[1].mm_per) if (proj and proj[1]) else None,
                     composite_role=roles.get(e.id, ("", None))[0],
                     composite_partner=roles.get(e.id, ("", None))[1],
+                    unit_length=ul,
+                    unit_length_mm=(ul * uu.mm_per) if (ul is not None and uu) else None,
+                    unit_area_shape=shape,
+                    unit_length2=u2,
+                    unit_length2_mm=(u2 * u2u.mm_per) if (u2 is not None and u2u) else None,
                 )
             )
 

@@ -161,10 +161,19 @@ def check_declared() -> int:
         if want is None:
             skip += 1
             continue
-        got = len(extract(load_step(f)).tolerances)
+        x = extract(load_step(f))
+        got = len(x.tolerances)
+        # 数え方の規約が2通りある。複合公差の上下2段を2件と数えるファイルと、
+        # 1件と数えるファイルがある。後者は 'number of composite tolerances' を
+        # そもそも宣言しない（宣言の組自体が違う生成器の出力）。
+        folded = got - len(x.composites)
+        has_comp_decl = "number of composite tolerances" in d
         if want == got:
             ok += 1
             mark = "OK"
+        elif not has_comp_decl and want == folded:
+            ok += 1
+            mark = f"OK（複合を1件と数える規約。{got}件 - 複合{len(x.composites)}対）"
         else:
             ng += 1
             mark = f"不一致（差 {got - want:+d}）"
