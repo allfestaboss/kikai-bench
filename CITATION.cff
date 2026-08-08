@@ -1,0 +1,52 @@
+cff-version: 1.2.0
+message: "本ベンチマークを利用した場合は、以下を引用してください。 / If you use this benchmark, please cite it as below."
+type: software
+
+title: "kikai-bench: AIは機械図面の幾何公差をどこまで読めるか"
+
+abstract: >-
+  A benchmark measuring how far large language models can read semantic PMI — machine-interpretable geometric tolerances and datums — embedded in STEP AP242 files.
+  
+  Semantic PMI is the part of a 3D model that is meant to be consumed by software rather than looked at, so a correct answer is checkable exactly: the tolerance type, value, and datum references either match the file or they do not. The corpus is the NIST MBE PMI validation test set, whose published PMI definitions serve as an external reference.
+  
+  Principal finding: accuracy saturates while cost does not. Arms B (knowledge, no code execution) and C (knowledge plus Python) both reached full agreement, but arm B consumed roughly 4.9x the tokens of arm C on the larger task and still covered one fewer file. What code execution buys here is unit cost, not correctness.
+
+  STEP AP242 に埋め込まれた semantic PMI（機械可読な幾何公差・データム）を読み取る能力を測る。正誤が厳密に決まる領域で、点数は飽和しコストが分離した。
+
+authors:
+  - family-names: "Ohkubo"
+    given-names: "Boss"
+    affiliation: "Allfesta Corp."
+    orcid: "https://orcid.org/0009-0007-8300-0039"
+
+version: "1.0.0"
+date-released: "2026-08-08"
+license: MIT
+url: "https://github.com/allfestaboss/kikai-bench"
+repository-code: "https://github.com/allfestaboss/kikai-bench"
+
+keywords:
+  - LLM benchmark
+  - STEP AP242
+  - semantic PMI
+  - geometric tolerance
+  - GD&T
+  - MBD
+  - mechanical engineering
+  - cost-aware evaluation
+  - evaluation methodology
+  - 幾何公差
+  - 機械図面
+
+references:
+  - type: data
+    title: "MBE PMI Validation and Conformance Testing Project"
+    authors:
+      - name: "National Institute of Standards and Technology (NIST) / MBx Interoperability Forum"
+    url: "https://www.mbx-if.org/home/cax/resources/"
+    notes: "STEP AP242 テストファイルと PMI 定義の出所。再配布制限なし。"
+  - type: standard
+    title: "ASME Y14.5 Dimensioning and Tolerancing"
+    authors:
+      - name: "ASME"
+    notes: "PMI 定義が参照する幾何公差の規格。同梱していない。"

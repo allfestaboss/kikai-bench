@@ -1,0 +1,27 @@
+NOTICE — データの取り扱い / Note on data
+========================================
+
+`LICENSE` の MIT は、本リポジトリの**コードと文章**に適用されます。
+同梱しているデータは MIT の対象外で、それぞれの配布条件に従います。
+The MIT License covers the code and prose. Bundled data is NOT covered
+by it and retains its own terms.
+
+
+同梱しているもの / Bundled
+---------------------------
+
+  corpus/nist/*.stp    STEP AP242 テストファイル
+  corpus/nist/*.xlsx   NIST-FTC-PMI-Definitions（PMI 定義。ASME Y14.5 の項番つき）
+
+  出典 : NIST MBE PMI Validation and Conformance Testing Project /
+         MBx Interoperability Forum
+         https://www.nist.gov/ctl/smart-connected-systems-division/smart-connected-manufacturing-systems-group/mbe-pmi-0
+         https://www.mbx-if.org/home/cax/resources/
+
+  条件 : 再配布の制限は付されていません。出典表示が望ましいとされています。
+         **NIST のロゴを宣伝素材に用いること、および NIST や MBx-IF による
+         推奨を示唆することは認められていません。** 本リポジトリはいずれも行いません。
+
+  No redistribution restrictions are attached. Attribution is requested. Use
+  of the NIST logo in promotional material, or any implication of endorsement
+  by NIST or the MBx-IF, is not permitted; this repository does neither.

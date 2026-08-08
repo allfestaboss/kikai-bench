@@ -2,8 +2,8 @@
 
 STEP AP242 に埋め込まれた **semantic PMI（機械可読な幾何公差・データム）** を
 読み取る能力を、機械採点で測るベンチマーク。
-[cad-bench](../cad-bench) / [sekisan-bench](../sekisan-bench) / [doboku-bench](../doboku-bench) /
-[kanzei-bench](../kanzei-bench) / [jiban-bench](../jiban-bench) に続く AI実務到達度インデックスの6本目で、
+cad-bench / sekisan-bench / doboku-bench /
+kanzei-bench / jiban-bench に続く AI実務到達度インデックスの6本目で、
 **CAD横断シリーズの3業界目**（建築2D → 土木SXF → 機械STEP）。
 
 ## 測るのは「書けるか」ではなく「読めるか」
@@ -417,3 +417,31 @@ stc_10 だけ **`number of composite tolerances` を宣言せず**、代わり�
 
 テストデータは NIST MBE PMI Validation and Conformance Testing Project および
 MBx Interoperability Forum のものである。詳細は [docs/SOURCES.md](docs/SOURCES.md)。
+
+
+## 関連研究 — この位置づけ
+
+| 研究 | 対象 | 本ベンチとの違い |
+|---|---|---|
+| [BIM-Edit](https://arxiv.org/abs/2606.20146v1) (2026) | IFC の自然言語編集 | 建築BIM。機械 CAD の PMI は扱わない |
+| AP242 Benchmarks (AFNET) | STEP AP242 の相互運用性 | **PLM 製品の適合性検証**であって LLM 評価ではない |
+| [AECV-Bench](https://api.emergentmind.com/topics/aecv-bench) | 建築・工学図面の多モーダル理解 | 図面画像の読解。semantic PMI は画像ではない |
+
+名称が近い AP242 Benchmarks は PLM ソフトウェアの相互運用性を検証するもので、LLM の評価ではない。semantic PMI の読解を LLM に課したベンチマークは、調査した範囲では見つからなかった（2026-08 時点）。
+
+なお**コストを併記すること自体は 2026 年時点で標準的**であり、本ベンチの新規性ではない。
+主要リーダーボードは cost-per-task を既定で並べている。シリーズとして測っているのは、
+業界をまたいで条件を揃えたときの**単価の差**のほうである。
+
+## ライセンスと引用
+
+**コードと文章は MIT。** → `LICENSE`
+
+**同梱データは MIT の対象外**で、それぞれの配布条件に従う。詳細は `NOTICE`。
+
+引用は `CITATION.cff` を参照（GitHub の「Cite this repository」からも取得できる）。
+
+```
+Ohkubo, B. (Allfesta Corp.) (2026). kikai-bench: AIは機械図面の幾何公差をどこまで読めるか.
+https://orcid.org/0009-0007-8300-0039
+```

@@ -1,0 +1,35 @@
+{
+  "title": "kikai-bench: AIは機械図面の幾何公差をどこまで読めるか",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "language": "jpn",
+  "creators": [
+    {
+      "name": "Ohkubo, Boss",
+      "affiliation": "Allfesta Corp.",
+      "orcid": "0009-0007-8300-0039"
+    }
+  ],
+  "description": "<p>A benchmark measuring how far large language models can read semantic PMI — machine-interpretable geometric tolerances and datums — embedded in STEP AP242 files.</p><p>Semantic PMI is the part of a 3D model that is meant to be consumed by software rather than looked at, so a correct answer is checkable exactly: the tolerance type, value, and datum references either match the file or they do not. The corpus is the NIST MBE PMI validation test set, whose published PMI definitions serve as an external reference.</p><p>Principal finding: accuracy saturates while cost does not. Arms B (knowledge, no code execution) and C (knowledge plus Python) both reached full agreement, but arm B consumed roughly 4.9x the tokens of arm C on the larger task and still covered one fewer file. What code execution buys here is unit cost, not correctness.</p><p>STEP AP242 に埋め込まれた semantic PMI（機械可読な幾何公差・データム）を読み取る能力を測る。正誤が厳密に決まる領域で、点数は飽和しコストが分離した。</p><p>Part of the AI Practical Reach Index, a series applying one common yardstick across Japanese professional domains.</p>",
+  "keywords": [
+    "LLM benchmark",
+    "STEP AP242",
+    "semantic PMI",
+    "geometric tolerance",
+    "GD&T",
+    "MBD",
+    "mechanical engineering",
+    "cost-aware evaluation",
+    "evaluation methodology",
+    "幾何公差",
+    "機械図面"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://www.mbx-if.org/home/cax/resources/",
+      "relation": "isDerivedFrom",
+      "scheme": "url"
+    }
+  ]
+}
