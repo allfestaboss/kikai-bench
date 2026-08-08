@@ -1,5 +1,8 @@
 # kikai-bench — AIは機械図面の幾何公差をどこまで読めるか
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21847247.svg)](https://doi.org/10.5281/zenodo.21847247)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 STEP AP242 に埋め込まれた **semantic PMI（機械可読な幾何公差・データム）** を
 読み取る能力を、機械採点で測るベンチマーク。
 cad-bench / sekisan-bench / doboku-bench /
@@ -444,4 +447,5 @@ MBx Interoperability Forum のものである。詳細は [docs/SOURCES.md](docs
 ```
 Ohkubo, B. (Allfesta Corp.) (2026). kikai-bench: AIは機械図面の幾何公差をどこまで読めるか.
 https://orcid.org/0009-0007-8300-0039
+Zenodo. https://doi.org/10.5281/zenodo.21847247
 ```
