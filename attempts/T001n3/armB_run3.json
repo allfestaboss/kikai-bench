@@ -1,0 +1,396 @@
+{
+  "task": "T001",
+  "results": [
+    {
+      "file": "nist_ftc_06_asme1_ap242-e2.stp",
+      "schema": "AP242_MANAGED_MODEL_BASED_3D_ENGINEERING_MIM_LF { 1 0 10303 442 3 1 4 }",
+      "tolerances": [
+        {
+          "id": 107,
+          "kind": "PERPENDICULARITY_TOLERANCE",
+          "name": "Perpendicularity.1",
+          "value": 0.012,
+          "unit": "inch",
+          "value_mm": 0.3048,
+          "datums": [
+            "A"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 108,
+          "kind": "PERPENDICULARITY_TOLERANCE",
+          "name": "Perpendicularity.2",
+          "value": 0.012,
+          "unit": "inch",
+          "value_mm": 0.3048,
+          "datums": [
+            "A",
+            "B"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 111,
+          "kind": "POSITION_TOLERANCE",
+          "name": "Position.21",
+          "value": 0.025,
+          "unit": "inch",
+          "value_mm": 0.635,
+          "datums": [
+            "C",
+            "A",
+            "B"
+          ],
+          "modifiers": [
+            "MAXIMUM_MATERIAL_REQUIREMENT"
+          ]
+        },
+        {
+          "id": 112,
+          "kind": "POSITION_TOLERANCE",
+          "name": "Position.1",
+          "value": 0.02,
+          "unit": "inch",
+          "value_mm": 0.508,
+          "datums": [
+            "F"
+          ],
+          "modifiers": [
+            "MAXIMUM_MATERIAL_REQUIREMENT"
+          ]
+        },
+        {
+          "id": 113,
+          "kind": "POSITION_TOLERANCE",
+          "name": "Position.14",
+          "value": 0.025,
+          "unit": "inch",
+          "value_mm": 0.635,
+          "datums": [
+            "A",
+            "B",
+            "C"
+          ],
+          "modifiers": [
+            "MAXIMUM_MATERIAL_REQUIREMENT"
+          ]
+        },
+        {
+          "id": 114,
+          "kind": "POSITION_TOLERANCE",
+          "name": "Position.19",
+          "value": 0.025,
+          "unit": "inch",
+          "value_mm": 0.635,
+          "datums": [
+            "A",
+            "B",
+            "C"
+          ],
+          "modifiers": [
+            "MAXIMUM_MATERIAL_REQUIREMENT"
+          ]
+        },
+        {
+          "id": 133,
+          "kind": "POSITION_TOLERANCE",
+          "name": "Position.1",
+          "value": 0.015,
+          "unit": "inch",
+          "value_mm": 0.381,
+          "datums": [
+            "E",
+            "A",
+            "B"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 134,
+          "kind": "POSITION_TOLERANCE",
+          "name": "Position.5",
+          "value": 0.015,
+          "unit": "inch",
+          "value_mm": 0.381,
+          "datums": [
+            "C",
+            "A",
+            "B"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 135,
+          "kind": "POSITION_TOLERANCE",
+          "name": "Position.15",
+          "value": 0.025,
+          "unit": "inch",
+          "value_mm": 0.635,
+          "datums": [
+            "D",
+            "B",
+            "C"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 136,
+          "kind": "POSITION_TOLERANCE",
+          "name": "Position.10",
+          "value": 0.015,
+          "unit": "inch",
+          "value_mm": 0.381,
+          "datums": [
+            "D",
+            "H"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 137,
+          "kind": "POSITION_TOLERANCE",
+          "name": "Position.11",
+          "value": 0.015,
+          "unit": "inch",
+          "value_mm": 0.381,
+          "datums": [
+            "D",
+            "G"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 138,
+          "kind": "POSITION_TOLERANCE",
+          "name": "Position.9",
+          "value": 0.025,
+          "unit": "inch",
+          "value_mm": 0.635,
+          "datums": [
+            "D",
+            "C",
+            "J"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 139,
+          "kind": "POSITION_TOLERANCE",
+          "name": "Position.8",
+          "value": 0.025,
+          "unit": "inch",
+          "value_mm": 0.635,
+          "datums": [
+            "D",
+            "C",
+            "K"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 146,
+          "kind": "FLATNESS_TOLERANCE",
+          "name": "Flatness.1",
+          "value": 0.01,
+          "unit": "inch",
+          "value_mm": 0.254,
+          "datums": [],
+          "modifiers": []
+        },
+        {
+          "id": 147,
+          "kind": "FLATNESS_TOLERANCE",
+          "name": "Flatness.3",
+          "value": 0.01,
+          "unit": "inch",
+          "value_mm": 0.254,
+          "datums": [],
+          "modifiers": []
+        },
+        {
+          "id": 148,
+          "kind": "FLATNESS_TOLERANCE",
+          "name": "Flatness.2",
+          "value": 0.01,
+          "unit": "inch",
+          "value_mm": 0.254,
+          "datums": [],
+          "modifiers": []
+        },
+        {
+          "id": 337,
+          "kind": "SURFACE_PROFILE_TOLERANCE",
+          "name": "Position surfacic profile.9",
+          "value": 0.05,
+          "unit": "inch",
+          "value_mm": 1.27,
+          "datums": [
+            "D",
+            "B",
+            "C"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 338,
+          "kind": "SURFACE_PROFILE_TOLERANCE",
+          "name": "Position surfacic profile.9",
+          "value": 0.01,
+          "unit": "inch",
+          "value_mm": 0.254,
+          "datums": [
+            "D"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 339,
+          "kind": "SURFACE_PROFILE_TOLERANCE",
+          "name": "Position surfacic profile.10",
+          "value": 0.05,
+          "unit": "inch",
+          "value_mm": 1.27,
+          "datums": [
+            "D",
+            "B",
+            "C"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 340,
+          "kind": "SURFACE_PROFILE_TOLERANCE",
+          "name": "Position surfacic profile.10",
+          "value": 0.01,
+          "unit": "inch",
+          "value_mm": 0.254,
+          "datums": [
+            "D"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 341,
+          "kind": "SURFACE_PROFILE_TOLERANCE",
+          "name": "Position surfacic profile.3",
+          "value": 0.02,
+          "unit": "inch",
+          "value_mm": 0.508,
+          "datums": [
+            "A",
+            "B",
+            "C"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 342,
+          "kind": "SURFACE_PROFILE_TOLERANCE",
+          "name": "Position surfacic profile.1",
+          "value": 0.02,
+          "unit": "inch",
+          "value_mm": 0.508,
+          "datums": [
+            "A",
+            "B",
+            "C"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 343,
+          "kind": "SURFACE_PROFILE_TOLERANCE",
+          "name": "Position surfacic profile.2",
+          "value": 0.04,
+          "unit": "inch",
+          "value_mm": 1.016,
+          "datums": [
+            "A",
+            "B",
+            "C"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 344,
+          "kind": "SURFACE_PROFILE_TOLERANCE",
+          "name": "Position surfacic profile.12",
+          "value": 0.05,
+          "unit": "inch",
+          "value_mm": 1.27,
+          "datums": [
+            "D",
+            "B",
+            "C"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 345,
+          "kind": "SURFACE_PROFILE_TOLERANCE",
+          "name": "Position surfacic profile.12",
+          "value": 0.01,
+          "unit": "inch",
+          "value_mm": 0.254,
+          "datums": [
+            "D"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 346,
+          "kind": "SURFACE_PROFILE_TOLERANCE",
+          "name": "Position surfacic profile.11",
+          "value": 0.05,
+          "unit": "inch",
+          "value_mm": 1.27,
+          "datums": [
+            "D",
+            "B",
+            "C"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 347,
+          "kind": "SURFACE_PROFILE_TOLERANCE",
+          "name": "Position surfacic profile.11",
+          "value": 0.01,
+          "unit": "inch",
+          "value_mm": 0.254,
+          "datums": [
+            "D"
+          ],
+          "modifiers": []
+        },
+        {
+          "id": 348,
+          "kind": "SURFACE_PROFILE_TOLERANCE",
+          "name": "Geometrical Tolerance.1",
+          "value": 0.05,
+          "unit": "inch",
+          "value_mm": 1.27,
+          "datums": [
+            "A",
+            "B",
+            "C"
+          ],
+          "modifiers": []
+        }
+      ],
+      "datums": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "J",
+        "K"
+      ]
+    }
+  ]
+}
