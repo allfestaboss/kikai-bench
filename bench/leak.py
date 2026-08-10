@@ -36,6 +36,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -46,14 +47,47 @@ ROOT = Path(__file__).resolve().parent.parent
 # 「誤り」は記入例が実物より短い一覧を書いていることによる。**省略である旨は
 # 課題文のどこにも書いていない**ので、記入例は実在しない値を形として示している。
 # 見本の省略なら本来は「省略」と書くべきで、書いていない以上これは欠陥である。
-KNOWN = {"T001": {"leak": 1, "wrong": 1},
-         "T002": {"leak": 0, "wrong": 2}}
+KNOWN = {"T001": {"leak": 1, "wrong": 1, "note": 0},
+         # T002 の note 2件は**誤検出**。件数 3 と 2 が本文の「3」「2」に当たっただけで、
+         # 該当する文は採点対象の件数を述べていない。人が読んで判定した。
+         "T002": {"leak": 0, "wrong": 2, "note": 2},
+         # T003 の note は、欠陥を説明するつもりで採点対象の件数を2つ開示している。
+         # **記入例を直した版が、直す理由を書いた文で別の漏れを作った。**
+         # T006（bim-bench）と同じ形で、これで3回連続である。走行後なので直さない。
+         # T003 の note 2件は**本物**。28 は公差の総数、9 は zone_form が非空の件数で、
+         # どちらも欠陥を説明する文の中でこちらが書いた。腕が指摘して分かった。
+         "T003": {"leak": 0, "wrong": 0, "note": 2}}
 
 
 def approx(a, b) -> bool:
     if isinstance(a, (int, float)) and isinstance(b, (int, float)):
         return abs(float(a) - float(b)) < 1e-6
     return a == b
+
+
+def note_leak(task: dict, ref: dict) -> list[str]:
+    """課題文の散文が、採点対象の**件数**を漏らしていないか。
+
+    記入例が実在の行かどうかとは別の経路である。T003 の note は
+    「28件中1件を配っていた」「同じ9箇所を null で出した」と書いており、
+    28 は公差の総数、9 は zone_form が非空の件数そのものだった。
+    **欠陥を説明するために書いた文が、次の漏れになる。**
+    """
+    tols = [t for r in ref.get("results", []) for t in r.get("tolerances", [])]
+    counts = {"公差の総数": len(tols)}
+    for f in ("zone_form", "modifiers", "projected_length_mm",
+              "unit_length_mm", "unit_area_shape", "composite_role"):
+        n = sum(1 for t in tols if t.get(f) not in (None, "", [], {}))
+        if n:
+            counts[f"{f} が非空の件数"] = n
+    text = " ".join(str(task.get(k, "")) for k in ("note", "title", "asked",
+                                                   "grade_levels_note",
+                                                   "answer_format_note"))
+    nums = set(re.findall(r"\d+", text))
+    # **小さい件数は判定力が無い。**2 や 3 はどんな文章にも当たる。
+    # 10未満は「要確認」として出し、判定は人がする（shortcut.py と同じ扱い）。
+    return [f"{label}={n}" + ("   ※10未満。偶然の一致が多い" if n < 10 else "")
+            for label, n in counts.items() if str(n) in nums]
 
 
 def check(task_id: str) -> int:
@@ -105,6 +139,7 @@ def check(task_id: str) -> int:
                 wrongs.append((exr["file"], f"（ファイル）{k}", [f"{v} ≠ {rec[k]}"]))
 
     hidden = sorted(graded_fields - seen_fields)
+    notes = note_leak(task, ref)
 
     print(f"=== {task_id} 解答様式の記入例 ===")
     for f, tid, n in leaks:
@@ -115,22 +150,25 @@ def check(task_id: str) -> int:
     if hidden:
         print(f"  [隠蔽] 採点対象なのに記入例に一度も出ないフィールド {len(hidden)}件:")
         print(f"         {', '.join(hidden)}")
-    if not leaks and not wrongs and not hidden:
+    for x in notes:
+        print(f"  [課題文] 散文が採点対象の件数を漏らしている: {x}")
+    if not leaks and not wrongs and not hidden and not notes:
         print("  漏れ・誤り・隠蔽なし")
 
     want = KNOWN.get(task_id)
     print()
     if want:
-        got = {"leak": len(leaks), "wrong": len(wrongs)}
+        got = {"leak": len(leaks), "wrong": len(wrongs), "note": len(notes)}
         if got == want:
-            print(f"既知の欠陥を検出（この検査自身の較正）: 漏れ{want['leak']} / 誤り{want['wrong']}")
+            print(f"既知の欠陥を検出（この検査自身の較正）: "
+                  f"漏れ{want['leak']} / 誤り{want['wrong']} / 課題文{want['note']}")
             print("  **記入例は直していない。**走行後に直すと、答案を見てから課題文を"
                   "書き換えたことになる。次版で作り直す。")
             return 0
         print(f"**較正に失敗。** 期待 {want} / 実際 {got}")
         return 1
-    if leaks or wrongs:
-        print(f"**記入例に欠陥 {len(leaks)+len(wrongs)}件。**")
+    if leaks or wrongs or notes:
+        print(f"**欠陥 {len(leaks)+len(wrongs)+len(notes)}件。**")
         return 1
     return 0
 
