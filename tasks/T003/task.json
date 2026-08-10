@@ -1,0 +1,187 @@
+{
+ "id": "T003",
+ "title": "STEP AP242 の semantic PMI を読む — 幾何公差・データム・修飾子の抽出",
+ "note": "**T001 の再出題である。**T001 は測定として成立したが、**解答様式の記入例が3通りに壊れていた。**(1)例の行が採点対象の行そのものだった（28件中1件を配っていた）。(2)例に書いたデータムの一覧が実物より短く、省略である旨をどこにも書いていなかった。(3)採点対象の6フィールドが例に一度も現れず、**独立した6本の解答者が1件のずれもなく同じ9箇所を null で出した**（読解の失敗ではなく、聞かれていないことに答えなかっただけ）。**T001 は直していない。**答案を見てから課題文を書き換えるのは測定を壊すからである。欠陥は T001 に保存し、ここで記入例を作り直した。**設問・規則・対象ファイル・参照解は T001 と一字一句同じで、違いは記入例だけである。**記入例は**課題に出てこない2ファイル**から採ってあり、採点対象の行ではない。**これは腕の優劣を測る課題ではない。**隠蔽が原因だったなら、6走が揃って落としていた箇所が今回は埋まるはずで、埋まらなければ診断が間違っていたことになる。",
+ "files": [
+  {
+   "path": "corpus/nist/nist_ftc_06_asme1_ap242-e2.stp",
+   "source": "NIST MBE PMI Validation and Conformance Testing Project / FTC-06",
+   "note": "AP242 edition 2。semantic PMI あり。"
+  }
+ ],
+ "asked": [
+  "ファイルに含まれる幾何公差を全て挙げ、種別・公差値・単位を報告せよ",
+  "各公差の公差値を mm に換算せよ（ファイルの単位系は inch）",
+  "各公差が参照するデータムを、優先順位の順に報告せよ",
+  "材料状態の修飾子（最大実体公差方式など）が付いている公差を報告せよ",
+  "ファイルに定義されているデータム記号を全て挙げよ"
+ ],
+ "rules": [
+  "報告するのはファイルに実際に入っている semantic PMI であって、図面としてこうあるべき、という推測ではない",
+  "公差の種別は STEP の実体名で報告する（POSITION_TOLERANCE など）。複合実体では葉の型を使う",
+  "データムの順序は DATUM_SYSTEM の区画の並び順に従う。これが優先順位そのもの",
+  "共通データム（COMMON_DATUM_LIST）は 'A-B' のようにハイフンで連結して1つの区画として扱う",
+  "単位換算は同じファイル内の CONVERSION_BASED_UNIT の換算係数を使う。1 inch = 25.4 mm を外から持ち込まない"
+ ],
+ "answer_format": {
+  "task": "T003",
+  "results": [
+   {
+    "file": "nist_stc_10_asme1_ap242-e2.stp",
+    "tolerances": [
+     {
+      "id": 99,
+      "kind": "POSITION_TOLERANCE",
+      "label": "位置度",
+      "name": "Feature Control Frame (157)",
+      "value": 0.0,
+      "unit": "millimetre",
+      "value_mm": 0.0,
+      "datums": [
+       "A",
+       "B",
+       "C"
+      ],
+      "modifiers": [
+       "MAXIMUM_MATERIAL_REQUIREMENT"
+      ],
+      "zone_form": "cylindrical or circular",
+      "projected_length_mm": null,
+      "unit_length_mm": null,
+      "unit_area_shape": "",
+      "composite_role": "",
+      "composite_partner": null
+     },
+     {
+      "id": 176,
+      "kind": "POSITION_TOLERANCE",
+      "label": "位置度",
+      "name": "Feature Control Frame (187)",
+      "value": 0.8,
+      "unit": "millimetre",
+      "value_mm": 0.8,
+      "datums": [
+       "D",
+       "E",
+       "B"
+      ],
+      "modifiers": [],
+      "zone_form": "cylindrical or circular",
+      "projected_length_mm": 3.2,
+      "unit_length_mm": null,
+      "unit_area_shape": "",
+      "composite_role": "",
+      "composite_partner": null
+     },
+     {
+      "id": 96,
+      "kind": "STRAIGHTNESS_TOLERANCE",
+      "label": "真直度",
+      "name": "Feature Control Frame (105)",
+      "value": 0.2,
+      "unit": "millimetre",
+      "value_mm": 0.2,
+      "datums": [],
+      "modifiers": [],
+      "zone_form": "",
+      "projected_length_mm": null,
+      "unit_length_mm": 15.0,
+      "unit_area_shape": "",
+      "composite_role": "",
+      "composite_partner": null
+     },
+     {
+      "id": 486,
+      "kind": "SURFACE_PROFILE_TOLERANCE",
+      "label": "面の輪郭度",
+      "name": "Feature Control Frame (305)",
+      "value": 1.2,
+      "unit": "millimetre",
+      "value_mm": 1.2,
+      "datums": [
+       "A",
+       "B",
+       "C"
+      ],
+      "modifiers": [],
+      "zone_form": "",
+      "projected_length_mm": null,
+      "unit_length_mm": null,
+      "unit_area_shape": "",
+      "composite_role": "upper",
+      "composite_partner": 487
+     },
+     {
+      "id": 487,
+      "kind": "SURFACE_PROFILE_TOLERANCE",
+      "label": "面の輪郭度",
+      "name": "Feature Control Frame (305)",
+      "value": 0.2,
+      "unit": "millimetre",
+      "value_mm": 0.2,
+      "datums": [
+       "A"
+      ],
+      "modifiers": [],
+      "zone_form": "",
+      "projected_length_mm": null,
+      "unit_length_mm": null,
+      "unit_area_shape": "",
+      "composite_role": "lower",
+      "composite_partner": 486
+     }
+    ],
+    "datums": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E",
+     "F",
+     "G",
+     "H",
+     "J"
+    ]
+   },
+   {
+    "file": "nist_ctc_03_asme1_ap242-e2.stp",
+    "tolerances": [
+     {
+      "id": 37,
+      "kind": "FLATNESS_TOLERANCE",
+      "label": "平面度",
+      "name": "Flatness.1",
+      "value": 0.005,
+      "unit": "inch",
+      "value_mm": 0.127,
+      "datums": [],
+      "modifiers": [],
+      "zone_form": "",
+      "projected_length_mm": null,
+      "unit_length_mm": 6.35,
+      "unit_area_shape": "RECTANGULAR",
+      "composite_role": "",
+      "composite_partner": null
+     }
+    ],
+    "datums": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E",
+     "F"
+    ]
+   }
+  ]
+ },
+ "grade_levels": [
+  "Q1",
+  "Q2",
+  "Q3",
+  "Q4",
+  "Q5"
+ ],
+ "grade_levels_note": "この課題は複合公差を設問に含めていない（T002 で追加した）。腕に訊いていないものを減点しないため Q6 を外す。",
+ "answer_format_note": "**記入例の2ファイルは、この課題の対象ではない。**採点対象の行を例に使うとその行を配ることになるので、実在するが採点されないファイルから採ってある。**採点対象のフィールドが全て非空で現れるように選んである**（修飾子・公差域の形・突出長さ・単位あたりの長さ・単位あたりの形・複合公差の上下）。**複合公差は上下1組で示してある**——片方だけでは相手の番号が何を指すか分からないため。**一覧（datums）は省略していない。**そのファイルの実物である。"
+}

@@ -62,6 +62,8 @@ def hard_paths(task: str) -> list[Path]:
     arms = ROOT / "arms"
     if arms.is_dir():
         out += sorted(arms.glob(f"{task}_*.md"))
+        if (arms / "README.md").exists():
+            out.append(arms / "README.md")
     return [p for p in out if p.exists()]
 
 

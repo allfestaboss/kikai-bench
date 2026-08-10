@@ -1,0 +1,16 @@
+[OK] 較正: 参照解 100.0/100
+[OK] benign_rounded: 100.0/100  ← 丸めは通るべき
+[OK] evil_malformed: 0.0/100  失格=JSONとして読めない: Expecting ',' delimiter: line 1 col
+[OK] evil_drop_file: 53.7/100  失点=['Q1', 'Q2', 'Q3', 'Q4', 'Q5']  期待=Q1
+[OK] evil_invent: 97.2/100  失点=['Q1']  期待=Q1
+[OK] evil_datum_reverse: 84.9/100  失点=['Q4']  期待=Q4
+[OK] evil_datum_set: 92.1/100  失点=['Q4']  期待=Q4
+[--] evil_zero_to_null: この課題には該当する対象が無いので飛ばす
+[OK] evil_unit_confusion: 77.8/100  失点=['Q3']  期待=Q3
+[OK] evil_kind_swap: 86.3/100  失点=['Q2']  期待=Q2
+[OK] evil_drop_zone_form: 94.6/100  失点=['Q5']  期待=Q5
+[--] evil_drop_projected: この課題には該当する対象が無いので飛ばす
+[--] evil_drop_unit_area: この課題には該当する対象が無いので飛ばす
+[--] evil_drop_composite: この課題は Q6 を採点しないので飛ばす
+
+敵対テスト: 10/10 通過

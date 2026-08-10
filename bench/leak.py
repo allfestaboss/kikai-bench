@@ -70,16 +70,23 @@ def check(task_id: str) -> int:
     seen_fields: set[str] = set()
     graded_fields: set[str] = set()
 
-    for exr in ex_results:
-        rec = by_file.get(exr.get("file"))
-        if rec is None:
-            continue
+    # 採点対象のフィールドは**参照解の側**から取る（例がどのファイル由来かに依らない）。
+    for rec in ref.get("results", []):
         for tol in rec.get("tolerances", []):
-            graded_fields |= {k for k, v in tol.items()
-                              if v not in (None, "", [], {})}
+            graded_fields |= {k for k, v in tol.items() if v not in (None, "", [], {})}
+
+    for exr in ex_results:
+        # 例に出たフィールドは、例がどのファイルのものでも数える。
         for extol in exr.get("tolerances", []):
             seen_fields |= {k for k, v in extol.items()
                             if v not in (None, "", [], {})}
+        # 漏れ・誤りの照合は、例が**採点対象のファイル**のときだけ意味を持つ。
+        # 課題に出てこないファイルから採った例は、定義上どちらにも当たらない
+        # （それが「実在するが採点対象ではない行」という正しい形である）。
+        rec = by_file.get(exr.get("file"))
+        if rec is None:
+            continue
+        for extol in exr.get("tolerances", []):
             real = next((t for t in rec.get("tolerances", [])
                          if t.get("id") == extol.get("id")), None)
             if real is None:
