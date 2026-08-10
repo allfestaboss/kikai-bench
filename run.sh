@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # 使い方: ./run.sh [T001 T002 ...]   引数なしで全課題
 #
-# 採点の前に必ず (1)較正 (2)外部検算 (3)敵対テスト を通す。
+# 採点の前に必ず (1)較正 (2)外部検算 (3)敵対テスト (4)記入例の照合 を通す。
 # どれか落ちたら数字を出さない。
+#
+# (4) は他ベンチ(bim)で課題文に答えを印字したまま走らせた事故を受けて足した。
+# (1)-(3) は参照解の関数なので、原理的に課題文と記入例を見ていない。
 set -euo pipefail
 cd "$(dirname "$0")"
 PY=python3
@@ -25,6 +28,11 @@ echo "較正OK: $(grep '較正:' out/_selfcheck.txt)"
 $PY -m bench.crosscheck > out/_crosscheck.txt || true
 echo "外部検算: $(grep '定義との突き合わせ' out/_crosscheck.txt)"
 echo "          $(grep -E '^  一致 ' out/_crosscheck.txt)"
+
+# (4) 記入例。漏れ・誤り・隠蔽を見る
+$PY -m bench.leak > out/_leak.txt || {
+  echo "記入例の照合に失敗。out/_leak.txt を見ること。"; exit 1; }
+echo "記入例: $(grep -c '^  \[' out/_leak.txt) 件の既知の欠陥（未修正・凍結中）"
 
 for T in "${TASKS[@]}"; do
   # (3) 敵対テスト
