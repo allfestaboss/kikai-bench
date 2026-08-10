@@ -9,43 +9,89 @@
  "_meta": {
   "round": "n=3（両腕）",
   "purpose": "**T001 の記入例の欠陥（隠蔽）が原因だったかを確かめる。**T001 は6走すべてが 94.6 で、同じ9箇所を null にして Q5 で 5.4点を落とした。記入例に平面度を選んだせいで `zone_form` が例に一度も現れなかったのが原因、というのがこちらの診断である。設問・規則・対象ファイル・参照解は T001 と一字一句同じで、**違いは記入例だけ。**",
-  "result": "**埋まった。**T001 の 94.6×6走 に対し、T003 は 100.0。`zone_form` の9箇所が全走で埋まっている。診断の方向とは整合する。",
+  "result": "**埋まった。**T001 の 94.6×6走 に対し、T003 は **6走とも 100.0**。`zone_form` の9箇所が全走で埋まっている。診断の方向とは整合する。",
   "attribution_not_established": "**ただし帰属は確定していない。**`zone_form` が埋まった原因は3つあり、切り分けられていない。",
   "confound_1_example": "**記入例を直した効果（意図したもの）。**armC_r1 が「記入例6行と datums 2件を1文字違わず再現でき、これで丸め方・upper/lower の向き・フィールドの意味を確定させた」と申告している。**支持される。**",
-  "confound_2_nist_xlsx": "**運用側の穴。**`corpus/` を閲覧可としたが、そこに `NIST-FTC-PMI-Definitions.xlsx` があり、FTC-06 について10行——**値・公差域の形・データム・修飾子**——が入っている。`zone_form` は8行ぶん。armC_r2 が自分から申告した（独立に抽出したうえで突き合わせ検証に使った、と）。**同じ類型の穴を3回開けている**（doboku の samples/、bim の FROZEN、今回）。**ただし armB では自動的に外れる。**armB_r3 が『corpus/nist/ を Read で列挙しようとして EISDIR。Bash も Glob も無いので他にファイルがあるか確認する手段が無い』と報告しており、**armB は構造的に xlsx を発見できない。**その armB が満点を取っている。",
+  "confound_2_nist_xlsx": "**運用側の穴。**`corpus/` を閲覧可としたが、そこに `NIST-FTC-PMI-Definitions.xlsx` があり、FTC-06 について10行——**値・公差域の形・データム・修飾子**——が入っている。`zone_form` は8行ぶん。armC_r2 が自分から申告した（独立に抽出したうえで突き合わせ検証に使った、と）。**同じ類型の穴を3回開けている**（doboku の samples/、bim の FROZEN、今回）。**ただし armB では自動的に外れる。**armB_r3 が『corpus/nist/ を Read で列挙しようとして EISDIR。Bash も Glob も無いので他にファイルがあるか確認する手段が無い』と報告しており、**armB は構造的に xlsx を発見できない。**その armB が満点を取っている。 **走り終えて確定した: xlsx を読んだのは6走中1走（armC_r2）だけである。**残る5走は報告で『corpus 配下は対象の .stp 1ファイルのみ』と明記している。armB の3走は構造的に発見できず、armC も2走は読んでいない。**交絡2は事実上外れる。**",
   "confound_3_note_counts": "**こちらが書いた note の件数開示。**T003 の note に「28件中1件を配っていた」「同じ9箇所を null で出した」と書いた。**28 は公差の総数、9 は zone_form が非空の件数そのもの。**armC_r1 が指摘した。**ただし重さは限定的である**——どちらも入力ファイル自身が申告している（`'number of geometric tolerances', 28.` と ID属性の `tolerance_zone.1〜.9`）。**コーパスから得られない情報ではない。**bim T006 の4問の答えは課題文にしか無い情報だったので、**同列ではない。**",
   "correction": "**『欠陥を説明する注記が3回連続で答えを漏らした』と一度書いたが、言い過ぎだった。**T006 は課題文にしか無い情報を漏らしていた。T003 の2つの件数は入力に埋まっている。漏れであることは変わらないが、程度が違う。訂正する。",
   "asked_still_broken": "**残る本当の問題。**armC_r1 と armB_r3 が独立に指摘した。診断は「記入例で隠したから」だったが、原因はもう1つ **「そもそも `asked` が訊いていない」** があり、T003 はそちらを直していない。`asked` の5問に対し `answer_format` は15フィールドで、`zone_form` を含む9個はどの設問にも対応しない。**したがって「埋まらなければ診断が間違い」という対偶は成立しない。**埋まっても `asked` は壊れたままである。",
   "next": "清潔な検証には T004 が要る——**note から件数を外し、xlsx を禁止し、`asked` を直したもの。**",
   "leak_check": "`python3 -m bench.leak T003` は 漏れ0 / 誤り0 / 隠蔽0 / **課題文2**。記入例の3欠陥は塞がったが、note の件数開示が残っている（走行後なので直さない）。note を見る検査は今回足した。**件数が小さいと判定力が無い**（T002 で件数3と2が本文の「3」「2」に当たり誤検出）ので、10未満は要確認と明示し、本物か誤検出かを人が判定した記録を較正に残した。",
-  "arm_reports": "全走 attempts/T003/arm*_report.md に本文を保存した。上の交絡3つは全て報告由来である。"
+  "arm_reports": "全走 attempts/T003/arm*_report.md に本文を保存した。上の交絡3つは全て報告由来である。",
+  "cost": "統括トークン（下請け分を含まない）: armB 3走 512,410 / armC 3走 285,972。**armB / armC = 1.79倍。**ただし armB は下請けを 2〜8体使っており、その消費を含まないので**下界**である。armC は下請け0。T001 の同条件（下請け禁止）での 1.49倍とは比較できない。"
  },
  "armC": {
   "condition": "知識＋コード実行。自分でパーサを書く。STEP/AP242 専用ライブラリは禁止",
   "runs": [
-   {"run": "r1", "score": 100.0, "tokens": 108414, "duration_ms": 639121, "tool_uses": 33,
-    "note": "**記入例2ファイルに自作抽出器を掛けて較正し、記入例6行を1文字違わず再現。**その過程で自作パーサのバグ2件も潰した。**note の件数開示を指摘**"},
-   {"run": "r2", "score": 100.0, "tokens": 93426, "duration_ms": 429124, "tool_uses": 23,
-    "note": "**NIST の xlsx を読んだと自己申告**（独立抽出後の突き合わせに使用）。`asked` が直っていないことも指摘"},
-   {"run": "r3", "score": 100.0, "tokens": 84132, "duration_ms": 409950, "tool_uses": 21,
-    "note": "corpus 配下で STEP 以外は読んでいない。検証が効くのは zone_form と複合公差だけだと指摘"}
+   {
+    "run": "r1",
+    "score": 100.0,
+    "tokens": 108414,
+    "duration_ms": 639121,
+    "tool_uses": 33,
+    "note": "**記入例2ファイルに自作抽出器を掛けて較正し、記入例6行を1文字違わず再現。**その過程で自作パーサのバグ2件も潰した。**note の件数開示を指摘**"
+   },
+   {
+    "run": "r2",
+    "score": 100.0,
+    "tokens": 93426,
+    "duration_ms": 429124,
+    "tool_uses": 23,
+    "note": "**NIST の xlsx を読んだと自己申告**（独立抽出後の突き合わせに使用）。`asked` が直っていないことも指摘"
+   },
+   {
+    "run": "r3",
+    "score": 100.0,
+    "tokens": 84132,
+    "duration_ms": 409950,
+    "tool_uses": 21,
+    "note": "corpus 配下で STEP 以外は読んでいない。検証が効くのは zone_form と複合公差だけだと指摘"
+   }
   ],
   "tokens_total": 285972,
   "median": 100.0,
-  "range": [100.0, 100.0]
+  "range": [
+   100.0,
+   100.0
+  ]
  },
  "armB": {
   "condition": "知識のみ。**Read だけ**（この環境に Grep / Glob は無い）。シェル・コード実行は禁止。下請けは可",
   "runs": [
-   {"run": "r2", "score": 100.0, "tokens": 187156, "duration_ms": 828902, "tool_uses": 29,
+   {
+    "run": "r1",
+    "score": 100.0,
+    "tokens": 174509,
+    "duration_ms": 1134800,
+    "tool_uses": 17,
+    "subagents": 8,
+    "note": "**corpus 配下は対象の .stp のみ。**ファイル自身の検証プロパティ4種と presentation 側28件で完全性を裏取り。**`number of datums`=6 はデータム実体10個と食い違い、これで検算すると必ず外れる**と指摘"
+   },
+   {
+    "run": "r2",
+    "score": 100.0,
+    "tokens": 187156,
+    "duration_ms": 828902,
+    "tool_uses": 29,
     "subagents": 2,
-    "note": "**corpus 配下で STEP 以外は読んでいない。**意味側と表示側（DESCRIPTIVE_REPRESENTATION_ITEM）の28件を突き合わせて検算"},
-   {"run": "r3", "score": 100.0, "tokens": 150745, "duration_ms": 587556, "tool_uses": 33,
+    "note": "**corpus 配下で STEP 以外は読んでいない。**意味側と表示側（DESCRIPTIVE_REPRESENTATION_ITEM）の28件を突き合わせて検算"
+   },
+   {
+    "run": "r3",
+    "score": 100.0,
+    "tokens": 150745,
+    "duration_ms": 587556,
+    "tool_uses": 33,
     "subagents": 4,
-    "note": "**corpus/nist/ を列挙できないと報告**（Read で EISDIR、Bash も Glob も無い）。**xlsx を構造的に発見できないことの証拠**"}
+    "note": "**corpus/nist/ を列挙できないと報告**（Read で EISDIR、Bash も Glob も無い）。**xlsx を構造的に発見できないことの証拠**"
+   }
   ],
   "median": 100.0,
-  "range": [100.0, 100.0],
-  "note": "r1 は走行中"
+  "range": [
+   100.0,
+   100.0
+  ],
+  "tokens_total": 512410
  }
 }
