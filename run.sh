@@ -16,6 +16,12 @@ if [ ${#TASKS[@]} -eq 0 ]; then
 fi
 mkdir -p out
 
+# 凍結／事後記録の検算。課題文・参照解・腕への文面が答案の後に動いていたら止める。
+$PY -m bench.freeze > out/_freeze.txt 2>&1 || {
+  echo "凍結が破れている。out/_freeze.txt を見ること。"; cat out/_freeze.txt; exit 1; }
+echo "凍結OK: $(grep -c '^\[OK' out/_freeze.txt) 課題"
+
+
 # (0) 参照解を作り直す
 for T in "${TASKS[@]}"; do $PY -m bench.build_ref "$T" >/dev/null; done
 
