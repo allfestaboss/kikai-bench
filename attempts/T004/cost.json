@@ -1,0 +1,58 @@
+{
+ "_env": {
+  "model": "claude-opus-5[1m]",
+  "sampling": "既定（temperature 未指定）",
+  "harness": "Claude Code / general-purpose subagent",
+  "run_date": "2026-08-11",
+  "source": "recorded"
+ },
+ "_meta": {
+  "round": "n=3（両腕）",
+  "purpose": "**T003 で埋まったのが「記入例を直したから」か「設問が訊いていなかったから」かを切り分ける。**T003 は記入例だけを直し、`asked` は T001 のまま（採点される `zone_form` を一度も訊いていない）だった。T004 は `asked` を採点対象に揃える。設問以外は T003 と一字一句同じ。",
+  "result": "**6走とも 100.0。**T003（同じく 100.0）から動かなかった。",
+
+  "grid": "T001 から T004 で 2×2 の3マスが埋まった。\n  記入例が見せる × asked が訊く   -> T004  100.0（3走×2腕）\n  記入例が見せる × 訊かない       -> T003  100.0（3走×2腕）\n  見せない     × 訊かない       -> T001   94.6（3走×2腕。全走が同じ9箇所を null）\n  見せない     × 訊く           -> **未実施**",
+  "reading": "**記入例で見せれば足りる。訊くことは必要ではなかった。**T003 と T001 の差は記入例だけで、そこで埋まった。T004 と T003 の差は `asked` だけで、点数は動かなかった。",
+  "cannot_say": "**「訊くだけで足りるか」は言えない。**左下のマス（訊くが見せない）が空いている。埋めるには記入例から `zone_form` を隠し `asked` では訊く版が要る。",
+
+  "asked_gap_closed": "**「採点されるのに訊いていない」は0件になった。**`bench/leak.py` の新しい検査で機械照合している（T001 と T003 は2件、T004 は0件）。",
+  "opposite_mismatch_remains": "**向きが逆の不整合は残っている。**`label` / `name` / `composite_role` / `composite_partner` は答案様式で必須欄なのに、`asked` は訊かず採点もしない。armB_r3 が指摘した。T001 の欠陥（採点されるのに訊かない）とは逆で、**点数には影響しない**が揃っていない。",
+
+  "limitation_file": "**対象ファイルの側に分離材料が足りない。**6走中3走が独立に指摘した。Q4 の5項目のうち (3)突出長さ (4)単位あたりの長さ (5)単位あたりの形は**全28件が空**で、`PROJECTED_ZONE_DEFINITION` も `GEOMETRIC_TOLERANCE_WITH_DEFINED_UNIT` もこのファイルに存在しない。`zone_form` も28件中9件。**実際に差が付くのは修飾子（4件）と公差域の形（9件）だけ。**設問を揃えても、測れる幅はそこまでである。",
+
+  "unit_statement_wrong": "**`asked` の「（ファイルの単位系は inch）」は誤りである。**armC_r2 が指摘し、こちらで検算した。大域単位は `#10032 = CONVERSION_BASED_UNIT('MILLIMETRE',…)` で mm。inch なのは各公差が個別に参照する `#10033` の側。**大域単位を素直に見た腕は「換算不要」と誤読しうる。**T001・T003・T004 に入っており、**T002 だけが正しい**（T002 は該当文を持たない）。走行後なので T004 は直さない。",
+  "derived_from_wrong_version": "**同じ形の後退が2件ある。**T002 は `asked` で公差域の形・突出長さ・複合公差まで訊いており、T001 の欠陥はそこで既に直っていた。ところが T003 を **T001 の task.json から派生**させたので、直っていた `asked` を引き戻した。単位の誤りも同じ経路で運ばれている。**後継は直近の版から派生させること。**",
+
+  "corpus_hole_closed": "T003 で開いていた穴（`corpus/nist/NIST-FTC-PMI-Definitions.xlsx` が閲覧可）を塞いだ。**6走とも「対象の STEP 1本のみ」と申告している。**`FROZEN_T004.json` も禁止に加えた（T003 で1走が開きかけたため）。",
+  "arm_reports": "6走とも attempts/T004/arm*_report.md に本文を保存した。上の限界と誤りは全て報告由来である。"
+ },
+ "armC": {
+  "condition": "知識＋コード実行。自分でパーサを書く。STEP/AP242 専用ライブラリは禁止",
+  "runs": [
+   {"run": "r1", "score": 100.0, "tokens": 109107, "duration_ms": 596828, "tool_uses": 35,
+    "note": "**単位系の記述が誤りであることを指摘。**`affected curve length` という誤答誘発材（24件）の存在も報告"},
+   {"run": "r2", "score": 100.0, "tokens": 79305, "duration_ms": 421299, "tool_uses": 24,
+    "note": "**大域単位が mm であることを実体番号つきで指摘。**`#107`/`#108` が Part21 非準拠の平坦形であることも報告"},
+   {"run": "r3", "score": 100.0, "tokens": 74877, "duration_ms": 354677, "tool_uses": 18,
+    "note": "**Q4 の5項目中3項目が全件空で分離しないことを指摘**"}
+  ],
+  "tokens_total": 263289,
+  "median": 100.0,
+  "range": [100.0, 100.0]
+ },
+ "armB": {
+  "condition": "知識のみ。**Read だけ**（この環境に Grep / Glob は無い）。シェル・コード実行は禁止。下請けは可",
+  "runs": [
+   {"run": "r1", "score": 100.0, "tokens": null, "duration_ms": null, "tool_uses": null,
+    "note": "記録は attempts/T004/armB_r1_report.md"},
+   {"run": "r2", "score": 100.0, "tokens": 235072, "duration_ms": 561233, "tool_uses": 25,
+    "subagents": 5,
+    "note": "**待ちが最長375秒。打ち切らず完走。**その遅い1体が返した ID_ATTRIBUTE 索引が最強の検算になったと報告"},
+   {"run": "r3", "score": 100.0, "tokens": 163301, "duration_ms": 536641, "tool_uses": 19,
+    "subagents": 8,
+    "note": "**`label` / `name` が訊かれず採点もされないのに必須欄であることを指摘**"}
+  ],
+  "median": 100.0,
+  "range": [100.0, 100.0]
+ }
+}
