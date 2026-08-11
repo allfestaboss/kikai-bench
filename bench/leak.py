@@ -62,7 +62,10 @@ KNOWN = {"T001": {"leak": 1, "wrong": 1, "note": 0, "unasked": 2},
          # T003 の note 2件は**本物**。28 は公差の総数、9 は zone_form が非空の件数で、
          # どちらも欠陥を説明する文の中でこちらが書いた。腕が指摘して分かった。
          # T003 の note の「28」は本物（公差の総数）。「9」は10未満なので助言に落ちる。
-         "T003": {"leak": 0, "wrong": 0, "note": 1, "unasked": 2}}
+         "T003": {"leak": 0, "wrong": 0, "note": 1, "unasked": 2},
+         # T005 は **意図的に** zone_form を記入例から隠している。T004 の対照であり、
+         # 「設問で訊くだけで足りるか」を測るための設計。欠陥ではない。
+         "T005": {"leak": 0, "wrong": 0, "note": 0, "unasked": 0, "hidden_ok": 1}}
 
 
 def approx(a, b) -> bool:
@@ -239,6 +242,8 @@ def check(task_id: str) -> int:
     if want:
         got = {"leak": len(leaks), "wrong": len(wrongs), "note": len(notes),
                "unasked": len(miss)}
+        if "hidden_ok" in want:
+            got["hidden_ok"] = len(hidden)
         if got == want:
             print(f"既知の欠陥を検出（この検査自身の較正）: 漏れ{want['leak']} / "
                   f"誤り{want['wrong']} / 課題文{want['note']} / 未問合せ{want['unasked']}")

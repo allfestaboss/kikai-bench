@@ -1,0 +1,25 @@
+{
+ "task": "T005",
+ "kind": "腕を走らせる前に凍結した",
+ "answers_at_record": [],
+ "arms_prompt_recorded": true,
+ "hard": {
+  "tasks/T005/task.json": "dc2154271d961de087f57edd173a8f852c04cc0a9102783b405860e424e4dbe9",
+  "reference/T005.json": "e54f96947d22a437b5c171b05203534779520853cc52aee1e3c075ce648f30cc",
+  "arms/T005_armC.md": "98e1641f91e5d745e69e3ce1c7eb3b1f793de7904a80d057b98f7f554624a3e6"
+ },
+ "soft": {
+  "bench/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "bench/build_ref.py": "cf540455827d7fd7cabe0748de0458b95c3d0904f68ca480339087252b99a766",
+  "bench/check.py": "ae4b5930a8aa54fbd94835fec04660a089cce3efe38613c1fc4a108a70d00d7e",
+  "bench/cost.py": "b224c205d719ad10a147f893c5143c891b540919fba708d12173ed469b20e265",
+  "bench/crosscheck.py": "5741d231c06290734a9623473e5971b01059187d82e0d99660609f9d6a485f5e",
+  "bench/leak.py": "692fc36a68f0f73f3fd0d643034b6f4a3215cf777f1492461007eea409f450ab",
+  "bench/pmi.py": "df0b500aa2619e729e2371aa12a066f50056ee468291d3d59c87f161b816fb40",
+  "bench/selfcheck.py": "7387cfda685fc05f21d5db98b03654b98fe6c4533367f9993bdd150e390482f2",
+  "bench/spec.py": "34d15e430d4e5dbfda11060934c69b3adeb52efd71ddd14123ec6e911c7bb488",
+  "bench/step.py": "34112677b7a1dd865b72742b9eb634d496a34272e71b2835eb055aa116bc2f4b",
+  "bench/summary.py": "1c6be5e35a7fff0d2e8d10b9c2a441ad101cf34188fe76dc0fc6c4182385077e",
+  "checker/adversarial.py": "7bc2e4e25fb46e58fcc4cedfbd43ddea1d9c3c0dbef6c5515885c120421d051f"
+ }
+}
