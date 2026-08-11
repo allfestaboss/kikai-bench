@@ -44,20 +44,25 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # 既知の欠陥。数が変わったら検査か素材が変わっている。
 #
+# **T002 は「訊いていない」を持っていない。**asked が公差域の形・突出長さ・複合公差まで
+# 明示的に訊いており、T001 の欠陥はそこで既に直っていた。
+# ところが T003 を T001 の task.json から派生させたので、**直っていた asked を引き戻した。**
+# T004 で改めて直した。**後継を作るときは、直近の版から派生させること。**
+#
 # 「誤り」は記入例が実物より短い一覧を書いていることによる。**省略である旨は
 # 課題文のどこにも書いていない**ので、記入例は実在しない値を形として示している。
 # 見本の省略なら本来は「省略」と書くべきで、書いていない以上これは欠陥である。
-KNOWN = {"T001": {"leak": 1, "wrong": 1, "note": 0},
+KNOWN = {"T001": {"leak": 1, "wrong": 1, "note": 0, "unasked": 2},
          # T002 の note 2件は**誤検出**。件数 3 と 2 が本文の「3」「2」に当たっただけで、
          # 該当する文は採点対象の件数を述べていない。人が読んで判定した。
-         "T002": {"leak": 0, "wrong": 2, "note": 0},
+         "T002": {"leak": 0, "wrong": 2, "note": 0, "unasked": 0},
          # T003 の note は、欠陥を説明するつもりで採点対象の件数を2つ開示している。
          # **記入例を直した版が、直す理由を書いた文で別の漏れを作った。**
          # T006（bim-bench）と同じ形で、これで3回連続である。走行後なので直さない。
          # T003 の note 2件は**本物**。28 は公差の総数、9 は zone_form が非空の件数で、
          # どちらも欠陥を説明する文の中でこちらが書いた。腕が指摘して分かった。
          # T003 の note の「28」は本物（公差の総数）。「9」は10未満なので助言に落ちる。
-         "T003": {"leak": 0, "wrong": 0, "note": 1}}
+         "T003": {"leak": 0, "wrong": 0, "note": 1, "unasked": 2}}
 
 
 def approx(a, b) -> bool:
@@ -92,6 +97,56 @@ def note_leak(task: dict, ref: dict) -> list[str]:
     strong = [f"{label}={n}" for label, n in counts.items() if str(n) in nums and n >= 10]
     weak = [f"{label}={n}" for label, n in counts.items() if str(n) in nums and n < 10]
     return strong, weak
+
+
+# 採点対象のフィールド -> 課題文でそれを指す語。どれか1つ出ていれば「訊いている」とみなす。
+ASKED_TERMS = {
+    "id": ("実体番号", "エンティティ番号", "#"),
+    "kind": ("種別", "種類"),
+    "value": ("公差値",),
+    "unit": ("単位系", "単位を", "単位・", "・単位"),
+    "value_mm": ("mm に換算", "mm換算"),
+    "datums": ("データム",),
+    "modifiers": ("修飾子",),
+    "zone_form": ("公差域の形",),
+    "projected_length_mm": ("突出",),
+    "unit_length_mm": ("単位あたりの長さ",),
+    "unit_area_shape": ("単位あたりの領域",),
+    "composite_role": ("複合公差",),
+    "composite_partner": ("複合公差",),
+}
+
+
+def unasked(task: dict, ref: dict) -> list[str]:
+    """**採点されるのに、課題文が一度も訊いていないフィールド。**
+
+    これが T001 の欠陥の一般形である。採点器は5つのフィールドを見ていたのに、
+    `asked` はそのうち1つ（修飾子）しか訊いていなかった。
+    **独立した6本の解答者が、1件のずれもなく同じ9箇所を null で出した。**
+    読解の失敗ではなく、聞かれていないことに答えなかっただけである。
+
+    較正・外部検算・敵対テストはすべて参照解の関数なので、この食い違いを
+    原理的に検出できない。**`asked` を見る検査はここだけである。**
+    """
+    tols = [t for r in ref.get("results", []) for t in r.get("tolerances", [])]
+    asked = " ".join(task.get("asked") or [])
+    active = set(task.get("grade_levels") or [])
+    graded = set()
+    for lv, fs in (("Q1", {"id"}), ("Q2", {"kind"}), ("Q3", {"value", "value_mm", "unit"}),
+                   ("Q4", {"datums"}),
+                   ("Q5", {"modifiers", "zone_form", "projected_length_mm",
+                           "unit_length_mm", "unit_area_shape"}),
+                   ("Q6", {"composite_role", "composite_partner"})):
+        if lv in active:
+            graded |= fs
+    out = []
+    for f in sorted(graded):
+        # そのフィールドが参照解で一度も非空でないなら、訊かれていなくても実害は無い
+        if not any(t.get(f) not in (None, "", [], {}) for t in tols):
+            continue
+        if not any(term in asked for term in ASKED_TERMS.get(f, ())):
+            out.append(f)
+    return out
 
 
 def check(task_id: str) -> int:
@@ -159,6 +214,7 @@ def check(task_id: str) -> int:
 
     hidden = sorted(graded_fields - seen_fields)
     notes, notes_weak = note_leak(task, ref)
+    miss = unasked(task, ref)
 
     print(f"=== {task_id} 解答様式の記入例 ===")
     for f, tid, n in leaks:
@@ -173,23 +229,26 @@ def check(task_id: str) -> int:
         print(f"  [課題文] 散文が採点対象の件数を漏らしている: {x}")
     for x in notes_weak:
         print(f"  [参考] 件数が一致するが判定力が無い（10未満）: {x}")
-    if not leaks and not wrongs and not hidden and not notes:
+    if miss:
+        print(f"  [未問合せ] **採点されるのに asked が訊いていない** {len(miss)}件: {', '.join(miss)}")
+    if not leaks and not wrongs and not hidden and not notes and not miss:
         print("  漏れ・誤り・隠蔽なし")
 
     want = KNOWN.get(task_id)
     print()
     if want:
-        got = {"leak": len(leaks), "wrong": len(wrongs), "note": len(notes)}
+        got = {"leak": len(leaks), "wrong": len(wrongs), "note": len(notes),
+               "unasked": len(miss)}
         if got == want:
-            print(f"既知の欠陥を検出（この検査自身の較正）: "
-                  f"漏れ{want['leak']} / 誤り{want['wrong']} / 課題文{want['note']}")
+            print(f"既知の欠陥を検出（この検査自身の較正）: 漏れ{want['leak']} / "
+                  f"誤り{want['wrong']} / 課題文{want['note']} / 未問合せ{want['unasked']}")
             print("  **記入例は直していない。**走行後に直すと、答案を見てから課題文を"
                   "書き換えたことになる。次版で作り直す。")
             return 0
         print(f"**較正に失敗。** 期待 {want} / 実際 {got}")
         return 1
-    if leaks or wrongs or notes:
-        print(f"**欠陥 {len(leaks)+len(wrongs)+len(notes)}件。**")
+    if leaks or wrongs or notes or miss:
+        print(f"**欠陥 {len(leaks)+len(wrongs)+len(notes)+len(miss)}件。**")
         return 1
     return 0
 
