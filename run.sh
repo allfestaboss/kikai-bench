@@ -57,3 +57,6 @@ done
 
 echo
 echo "詳細: out/<TASK>.json  敵対: out/<TASK>_adversarial.txt"
+
+# 公開メタデータの版ズレ（Zenodo は .zenodo.json を権威として読む）
+$PY bench/release_check.py || exit 1
