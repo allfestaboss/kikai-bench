@@ -62,8 +62,11 @@ def hard_paths(task: str) -> list[Path]:
     arms = ROOT / "arms"
     if arms.is_dir():
         out += sorted(arms.glob(f"{task}_*.md"))
-        if (arms / "README.md").exists():
-            out.append(arms / "README.md")
+        # **arms/README.md は硬に入れない。**腕は arms/ を読めない（閲覧禁止）ので、
+        # これは運用側の文書であって「腕が読むもの」ではない。
+        # しかも課題を足すたびに必ず更新されるので、硬に置くと毎回発火する。
+        # **毎回鳴る警報は無視する癖を作る。**軟（bench/ checker/）にも入らないが、
+        # git の履歴で追える。
     return [p for p in out if p.exists()]
 
 

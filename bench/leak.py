@@ -50,13 +50,14 @@ ROOT = Path(__file__).resolve().parent.parent
 KNOWN = {"T001": {"leak": 1, "wrong": 1, "note": 0},
          # T002 の note 2件は**誤検出**。件数 3 と 2 が本文の「3」「2」に当たっただけで、
          # 該当する文は採点対象の件数を述べていない。人が読んで判定した。
-         "T002": {"leak": 0, "wrong": 2, "note": 2},
+         "T002": {"leak": 0, "wrong": 2, "note": 0},
          # T003 の note は、欠陥を説明するつもりで採点対象の件数を2つ開示している。
          # **記入例を直した版が、直す理由を書いた文で別の漏れを作った。**
          # T006（bim-bench）と同じ形で、これで3回連続である。走行後なので直さない。
          # T003 の note 2件は**本物**。28 は公差の総数、9 は zone_form が非空の件数で、
          # どちらも欠陥を説明する文の中でこちらが書いた。腕が指摘して分かった。
-         "T003": {"leak": 0, "wrong": 0, "note": 2}}
+         # T003 の note の「28」は本物（公差の総数）。「9」は10未満なので助言に落ちる。
+         "T003": {"leak": 0, "wrong": 0, "note": 1}}
 
 
 def approx(a, b) -> bool:
@@ -84,10 +85,13 @@ def note_leak(task: dict, ref: dict) -> list[str]:
                                                    "grade_levels_note",
                                                    "answer_format_note"))
     nums = set(re.findall(r"\d+", text))
-    # **小さい件数は判定力が無い。**2 や 3 はどんな文章にも当たる。
-    # 10未満は「要確認」として出し、判定は人がする（shortcut.py と同じ扱い）。
-    return [f"{label}={n}" + ("   ※10未満。偶然の一致が多い" if n < 10 else "")
-            for label, n in counts.items() if str(n) in nums]
+    # **小さい件数は判定力が無い。**設問番号の (4) が「修飾子4件」に当たる、という類の
+    # 一致が必ず出る。**判定力の無い一致で関門を止めてはいけない**ので、
+    # 10未満は助言として出すだけにして、落とすのは10以上に限る
+    # （shortcut.py を助言に格下げしたのと同じ理由）。
+    strong = [f"{label}={n}" for label, n in counts.items() if str(n) in nums and n >= 10]
+    weak = [f"{label}={n}" for label, n in counts.items() if str(n) in nums and n < 10]
+    return strong, weak
 
 
 def check(task_id: str) -> int:
@@ -104,10 +108,25 @@ def check(task_id: str) -> int:
     seen_fields: set[str] = set()
     graded_fields: set[str] = set()
 
-    # 採点対象のフィールドは**参照解の側**から取る（例がどのファイル由来かに依らない）。
+    # **「採点対象」は採点器が実際に見るフィールドに限る。**
+    # 参照解の非空フィールドを全部要求すると、採点していない複合公差まで
+    # 記入例に出せと言うことになる（T003 でその矛盾が出た）。
+    # grade_levels に載っている段のフィールドだけを見る。
+    GRADED_BY_LEVEL = {
+        "Q1": {"id"},
+        "Q2": {"kind"},
+        "Q3": {"value", "value_mm", "unit"},
+        "Q4": {"datums"},
+        "Q5": {"modifiers", "zone_form", "projected_length_mm",
+               "unit_length_mm", "unit_area_shape"},
+        "Q6": {"composite_role", "composite_partner"},
+    }
+    active = set(task.get("grade_levels") or GRADED_BY_LEVEL)
+    want = set().union(*(GRADED_BY_LEVEL[l] for l in active if l in GRADED_BY_LEVEL))
     for rec in ref.get("results", []):
         for tol in rec.get("tolerances", []):
-            graded_fields |= {k for k, v in tol.items() if v not in (None, "", [], {})}
+            graded_fields |= {k for k, v in tol.items()
+                              if k in want and v not in (None, "", [], {})}
 
     for exr in ex_results:
         # 例に出たフィールドは、例がどのファイルのものでも数える。
@@ -139,7 +158,7 @@ def check(task_id: str) -> int:
                 wrongs.append((exr["file"], f"（ファイル）{k}", [f"{v} ≠ {rec[k]}"]))
 
     hidden = sorted(graded_fields - seen_fields)
-    notes = note_leak(task, ref)
+    notes, notes_weak = note_leak(task, ref)
 
     print(f"=== {task_id} 解答様式の記入例 ===")
     for f, tid, n in leaks:
@@ -152,6 +171,8 @@ def check(task_id: str) -> int:
         print(f"         {', '.join(hidden)}")
     for x in notes:
         print(f"  [課題文] 散文が採点対象の件数を漏らしている: {x}")
+    for x in notes_weak:
+        print(f"  [参考] 件数が一致するが判定力が無い（10未満）: {x}")
     if not leaks and not wrongs and not hidden and not notes:
         print("  漏れ・誤り・隠蔽なし")
 
