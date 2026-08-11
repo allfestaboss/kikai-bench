@@ -9,6 +9,8 @@ abstract: >-
   
   Semantic PMI is the part of a 3D model that is meant to be consumed by software rather than looked at, so a correct answer is checkable exactly: the tolerance type, value, and datum references either match the file or they do not. The corpus is the NIST MBE PMI validation test set, whose published PMI definitions serve as an external reference.
   
+  A second finding concerns the examination rather than the solver. The first task scored 94.6 because nine fields were left null by every run. Three successor tasks vary two examination-side factors independently while sharing the reference byte-for-byte: whether the worked example shows the field, and whether the question text asks for it. Either one alone is sufficient (100.0); the original task failed because neither was present. The operative variable is whether a graded field's existence and name are discoverable at all.
+
   Principal finding: accuracy saturates while cost does not. Arms B (knowledge, no code execution) and C (knowledge plus Python) both reached full agreement, but arm B consumed roughly 4.9x the tokens of arm C on the larger task and still covered one fewer file. What code execution buys here is unit cost, not correctness.
 
   STEP AP242 に埋め込まれた semantic PMI（機械可読な幾何公差・データム）を読み取る能力を測る。正誤が厳密に決まる領域で、点数は飽和しコストが分離した。
@@ -19,11 +21,11 @@ authors:
     affiliation: "Allfesta Corp."
     orcid: "https://orcid.org/0009-0007-8300-0039"
 
-version: "1.1.0"
-date-released: "2026-08-10"
+version: "1.2.0"
+date-released: "2026-08-11"
 license: MIT
 
-# この版（v1.0.0）を指す DOI
+# この版（v1.2.0）を指す DOI。公開後に書き戻す
 doi: "10.5281/zenodo.21873248"
 
 identifiers:
@@ -32,7 +34,7 @@ identifiers:
     description: "Concept DOI — 常に最新版に解決する。版を問わず引用する場合はこちら。"
   - type: doi
     value: "10.5281/zenodo.21873248"
-    description: "Version DOI — v1.0.0 を指す。再現性を担保する場合はこちら。"
+    description: "Version DOI — v1.2.0 を指す。再現性を担保する場合はこちら。"
 url: "https://github.com/allfestaboss/kikai-bench"
 repository-code: "https://github.com/allfestaboss/kikai-bench"
 
